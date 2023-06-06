@@ -3,21 +3,40 @@ module.exports.config = {
 	eventType: ["log:unsubscribe","log:subscribe","log:thread-name"],
 	version: "1.0.0",
 	credits: "Mirai Team",
-	description: "Record bot activity notifications!",
+	description: "Ghi lại thông báo các hoạt đông của bot!",
     envConfig: {
         enable: true
     }
 };
 
-module.exports.run = async function({ api, event, Threads }) {
+module.exports.run = async function({ api, event, Users, Threads }) {
     const logger = require("../../utils/log");
     if (!global.configModule[this.config.name].enable) return;
-  let { threadName, participantIDs, imageSrc } = await api.getThreadInfo(event.threadID);
-  const moment = require('moment-timezone');
-  var deku = moment.tz("Asia/Colombo").format("MM/DD/YYYY");
-  var o = moment.tz("Asia/Colombo").format("HH:mm:ss");
-  const res = await api.getUserInfoV2(event.author);
-    var formReport =  `•——Bot Notification——•\n\nDate Now: ${deku}\n\n»Group ID: ${event.threadID}\n\n»Group Name: ${threadName}\n\nAuthor Facebook: https://facebook.com/${event.author}` +"\n\n»Action: {task} " + `at time ${o}` +`\n\n» Action created by: ${res.name}\n\n»This group have ${participantIDs.length} members`,
+    let botID = api.getCurrentUserID();
+    var allThreadID = global.data.allThreadID;
+    for (const singleThread of allThreadID) {
+      const thread = global.data.threadData.get(singleThread) || {};
+      if (typeof thread["log"] != "undefined" && thread["log"] == false) return;
+    } 
+    
+    const moment = require("moment-timezone");
+    const time = moment.tz("Asia/Kolkata").format("D/MM/YYYY HH:mm:ss");
+    //let nameThread = (await Threads.getData(event.threadID)).threadInfo.threadName || "Tên không tồn tại";
+    let nameThread = global.data.threadInfo.get(event.threadID).threadName || "Name does not exist"; 
+  
+    let threadInfo = await api.getThreadInfo(event.threadID);
+    nameThread =threadInfo.threadName;
+    const nameUser = global.data.userName.get(event.author) || await Users.getNameUser(event.author);
+  
+    console.log(nameThread)
+  
+    var formReport = "[⚜️] 𝙉𝙤𝙩𝙞𝙘𝙚 𝙁𝙧𝙤𝙢 𝘼 𝙂𝙧𝙤𝙪𝙥 [⚜️]" +
+      "\n\n[⚜️] 𝙂𝙧𝙤𝙪𝙥 𝙉𝙖𝙢𝙚: " + nameThread +
+      "\n\n[⚜️] 𝙂𝙧𝙤𝙪𝙥 𝙐𝙞𝙙: " + event.threadID +
+      "\n\n[⚜️] 𝘼𝙘𝙩𝙞𝙤𝙣: {task}" +
+      "\n\n[⚜️] 𝙋𝙚𝙧𝙨𝙤𝙣 𝙉𝙖𝙢𝙚: " + nameUser +
+      "\n\n[⚜️] 𝙃𝙞𝙨 𝙐𝙞𝙙: " + event.author +
+      "\n\n[⚜️] 𝙏𝙞𝙢𝙚: " + time + "",
         task = "";
     switch (event.logMessageType) {
         case "log:thread-name": {
@@ -27,11 +46,11 @@ module.exports.run = async function({ api, event, Threads }) {
             break;
         }
         case "log:subscribe": {
-            if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) task = "User added bot to a new group";
+            if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) task = "User added bot to a new group!";
             break;
         }
         case "log:unsubscribe": {
-            if (event.logMessageData.leftParticipantFbId== api.getCurrentUserID()) task = "User kicked bot out of group"
+            if (event.logMessageData.leftParticipantFbId== api.getCurrentUserID()) task = "User remove bot from the group!"
             break;
         }
         default: 
@@ -46,5 +65,4 @@ module.exports.run = async function({ api, event, Threads }) {
     return api.sendMessage(formReport, global.config.ADMINBOT[0], (error, info) => {
         if (error) return logger(formReport, "[ Logging Event ]");
     });
-return api.sendMessage(formReport, global.config.GOD[0]);
-  }
+              }

@@ -391,7 +391,7 @@ loginApiData.sendMessage(``)
 cron.schedule('0 0 0 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Goodmorning everyone, have a nice day \n\n\n\n (Contributed by-- Hemang Sheoran)", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Good morning everyone, have a nice day", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -400,7 +400,7 @@ cron.schedule('0 0 0 * * *', () => {
 cron.schedule('0 0 1 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Goodmorning everyone, have a nice day\n\n\n (Contributed by-- Hemang Sheoran)", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage(" 💙  💜  🤎    🖤 \n 𝗝𝗔𝗚 𝗝𝗔𝗢 𝗦𝗔𝗕𝗛𝗜 𝗞𝗘𝗦𝗜 𝗥𝗛𝗜 𝗦𝗕𝗛𝗜 𝗦𝗨𝗕𝗔𝗛 𝗢𝗥 𝗞𝗬𝗔 𝗛𝗔𝗟 𝗛 𝗦𝗔𝗕𝗛𝗜 𝗞 \n 💙  💜  🤎  🖤\n         ", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -409,7 +409,7 @@ cron.schedule('0 0 1 * * *', () => {
 cron.schedule('0 0 5 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Goodmorning everyone, have a nice day\n\n\n (Contributed by-- Hemang Sheoran)", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Good morning everyone, have a nice day", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -418,7 +418,7 @@ cron.schedule('0 0 5 * * *', () => {
 cron.schedule('0 0 6 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Goodmorning everyone, have a nice day\n\n\n (Contributed by-- Hemang Sheoran)", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Good morning everyone, have a nice day", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -427,7 +427,7 @@ cron.schedule('0 0 6 * * *', () => {
 cron.schedule('0 12 7 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Goodmorning everyone, have a nice day\n\n\n (Contributed by-- Hemang Sheoran)", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Good morning everyone, have a nice day", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -436,7 +436,7 @@ cron.schedule('0 12 7 * * *', () => {
 cron.schedule('0 0 7 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Goodafternoon humans, let's eat \n\n\n(Contributed by-- Hemang Sheoran)", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Good afternoon humans, let's eat ", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -445,7 +445,7 @@ cron.schedule('0 0 7 * * *', () => {
 cron.schedule('0 30 12 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("How's your eat?, have you eaten?\n\n\n (Contributed by-- Hemang Sheoran)", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("OR BTAO SAB KYA HAL CHAL H KHANA KHA LIYA SABNE YA KAM M LGE HUYE HO", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -454,7 +454,7 @@ cron.schedule('0 30 12 * * *', () => {
 cron.schedule('0 0 12 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Goodafternoon humans\n\n\n (Contributed by-- Hemang Sheoran)", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("OR BTAO SAB KYA HAL CHAL H KHANA KHA LIYA SABNE YA KAM M LGE HUYE HO", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -463,7 +463,7 @@ cron.schedule('0 0 12 * * *', () => {
 cron.schedule('0 0 18 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Goodevening humans, it's already evening, have you all eaten?\n\n\n(Contributed by-- Hemang Sheoran)", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("SUBH SANDHYA SABHI DOSTO KO ", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -472,7 +472,7 @@ cron.schedule('0 0 18 * * *', () => {
 cron.schedule('0 0 20 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Goodevening humans, it's already late evening, have you all eaten? \n\n\n (Contributed by-- Hemang Sheoran)", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("SUBH SANDHYA (GOOD EVENING) SABHI DOSTO KO ", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -481,7 +481,7 @@ cron.schedule('0 0 20 * * *', () => {
 cron.schedule('0 0 22 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Goodnight humans, have a sweet dreams\n\n\n (Contributed by-- Hemang Sheoran)", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("SUBH RATRI (GOOD NIGHT) DOSTO , SO JAO SABHI ", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -490,7 +490,7 @@ cron.schedule('0 0 22 * * *', () => {
 cron.schedule('0 0 24 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Goodmorning humans, another day another hope\n\n\n (Contributed by-- Hemang Sheoran) ", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("SUBH RATRI (GOOD NIGHT) DOSTO , SO JAO SABHI ", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -499,7 +499,7 @@ cron.schedule('0 0 24 * * *', () => {
 cron.schedule('0 0 4 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Goodmorning humans, let's welcome the morning with a beautiful smile\n\n\n (Contributed by-- Hemang Sheoran)", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("SUBH SANDHYA (GOOD MORNING) SABHI DOSTO KO ", now.threadID) : '');
   });
 }, {
   scheduled: true,

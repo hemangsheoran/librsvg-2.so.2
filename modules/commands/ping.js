@@ -1,29 +1,31 @@
 module.exports.config = {
 	name: "ping",
-	version: "1.0.5",
-	hasPermssion: 0,
-	credits: "Mirai Team",
+	version: "0.0.3",
+	hasPermssion: 1,
+	credits: "MR CHAND",
 	description: "Tag all members",
 	commandCategory: "system",
 	usages: "[Text]",
 	cooldowns: 80
 };
 
-module.exports.run = async function({ api, event, args }) {
+module.exports.run = async function({ api, event, args, Threads }) {
 	try {
-		const botID = api.getCurrentUserID();
-		var listAFK, listUserID;
-		global.moduleData["afk"] && global.moduleData["afk"].afkList ? listAFK = Object.keys(global.moduleData["afk"].afkList || []) : listAFK = []; 
-		listUserID = event.participantIDs.filter(ID => ID != botID && ID != event.senderID);
-		listUserID = listUserID.filter(item => !listAFK.includes(item));
-		var body = (args.length != 0) ? args.join(" ") : "​", mentions = [], index = 0;
-		for(const idUser of listUserID) {
-			body = "‎" + body;
-			mentions.push({ id: idUser, tag: "‎", fromIndex: index - 1 });
-			index -= 1;
-		}
+		var all = (await Threads.getInfo(event.threadID)).participantIDs;
+    all.splice(all.indexOf(api.getCurrentUserID()), 1);
+	  all.splice(all.indexOf(event.senderID), 1);
+		var body = (args.length != 0) ? args.join(" ") : "Admin mentioned you ", mentions = [], index = 0;
+		
+    for (let i = 0; i < all.length; i++) {
+		    if (i == body.length) body += body.charAt(body.length - 1);
+		    mentions.push({
+		  	  tag: body[i],
+		  	  id: all[i],
+		  	  fromIndex: i - 1
+		    });
+	    }
 
-		return api.sendMessage({ body, mentions }, event.threadID, event.messageID);
+		return api.sendMessage({ body: `‎${body}`, mentions }, event.threadID, event.messageID);
 
 	}
 	catch (e) { return console.log(e); }

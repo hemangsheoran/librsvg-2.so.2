@@ -2,9 +2,9 @@ module.exports.config = {
 	name: "rank",
 	version: "1.0.0",
 	hasPermssion: 0,
-	credits: "ZiaRein",
-	description: "Get your current rank on the bot system with a frame based on your level, remake rank_card from canvacord",
-	commandCategory: "TopRank",
+	credits: "Clarence-DK", 
+	description: "rank",
+	commandCategory: "Group",
 	cooldowns: 5,
 	dependencies: {
 		"fs-extra": "",
@@ -35,7 +35,7 @@ module.exports.makeRankCard = async (data) => {
     const path = global.nodemodule["path"];
 	const Canvas = global.nodemodule["canvas"];
 	const request = global.nodemodule["node-superfetch"];
-	const __root = path.resolve(__dirname, "cache/rankcard");
+	const __root = path.resolve(__dirname, "cache");
 	const PI = Math.PI;
 
     const { id, name, rank, level, expCurrent, expNextLevel } = data;
@@ -50,10 +50,10 @@ module.exports.makeRankCard = async (data) => {
 		weight: "bold",
 		style: "normal"
 	});
-//chỉnh sửa số ảnh rankcard để random
-	const pathCustom = path.resolve(__dirname, "cache/rankcard");
+//edit the number of rankcard photos to random
+	const pathCustom = path.resolve(__dirname, "cache", "customrank");
 	var customDir = fs.readdirSync(pathCustom);
-	let random = Math.floor(Math.random() * 22) + 1;
+	let random = Math.floor(Math.random() * 9) + 1;
 	    var dirImage = __root + "/rankcard" + random + ".png";
 
 
@@ -166,22 +166,31 @@ module.exports.onLoad = async function () {
     const { downloadFile } = global.utils;
 	const path = resolve(__dirname, "cache", "customrank");
     if (!existsSync(path)) mkdirSync(path, { recursive: true });
-//hàm dowload file có sẵn bao gồm font chữ hoặc pang rankcard (có thể thay)
-    if (!existsSync(resolve(__dirname, 'cache', 'regular-font.ttf'))) await downloadFile("https://raw.githubusercontent.com/catalizcs/storage-data/master/rank/fonts/regular-font.ttf", resolve(__dirname, 'cache', 'regular-font.ttf'));
-	if (!existsSync(resolve(__dirname, 'cache', 'bold-font.ttf'))) await downloadFile("https://raw.githubusercontent.com/catalizcs/storage-data/master/rank/fonts/bold-font.ttf", resolve(__dirname, 'cache', 'bold-font.ttf'));
-	if (!existsSync(resolve(__dirname, 'cache', 'rankcard.png'))) await downloadFile("https://raw.githubusercontent.com/catalizcs/storage-data/master/rank/rank_card/rankcard.png", resolve(__dirname, 'cache', 'rankcard.png'));
+//File download function is available including font or rankcard (can be changed)
+    if (!existsSync(resolve(__dirname, 'cache', 'regular-font.ttf'))) await downloadFile("https://github.com/J-JRT/JRT_main/blob/mainV2/modules/commands/cache/regular-font.ttf?raw=true", resolve(__dirname, 'cache', 'regular-font.ttf'));
+	if (!existsSync(resolve(__dirname, 'cache', 'bold-font.ttf'))) await downloadFile("https://github.com/J-JRT/JRT_main/blob/mainV2/modules/commands/cache/bold-font.ttf?raw=true", resolve(__dirname, 'cache', 'bold-font.ttf'));
+	if (!existsSync(resolve(__dirname, 'cache', 'rankcard.png'))) await downloadFile("https://github.com/J-JRT/JRT_main/raw/mainV2/modules/commands/cache/rankcard.png", resolve(__dirname, 'cache', 'rankcard.png'));
+  if (!existsSync(resolve(__dirname, 'cache', 'rankcard1.png'))) await downloadFile("https://imgur.com/cD7W8yS.png", resolve(__dirname, 'cache', 'rankcard1.png'));
+  if (!existsSync(resolve(__dirname, 'cache', 'rankcard1.png'))) await downloadFile("https://imgur.com/cD7W8yS.png", resolve(__dirname, 'cache', 'rankcard1.png'));
+  if (!existsSync(resolve(__dirname, 'cache', 'rankcard2.png'))) await downloadFile("https://imgur.com/AVkl1ON.png", resolve(__dirname, 'cache', 'rankcard2.png'));
+  if (!existsSync(resolve('modules', 'events', 'joinGIF', 'join.gif'))) await downloadFile("https://github.com/GIANJAJAHAHAHA/JRT_main/raw/mainV2/VID_20220710152453%20(1).gif", resolve('modules', 'events', 'joinGIF', 'join.gif'));
 
 }
 
-module.exports.run = async function ({ event, api, Currencies, Users }) {
+module.exports.run = async ({ event, api, args, Currencies, Users, Threads }) => {
 	const fs = global.nodemodule["fs-extra"];
-	let dataAll = (await Currencies.getAll(["userID", "exp"]));
-	dataAll.sort((a, b) => {
+	
+  let dataAll = (await Currencies.getAll(["userID", "exp"]));
+	const mention = Object.keys(event.mentions);
+            
+  dataAll.sort((a, b) => {
 		if (a.exp > b.exp) return -1;
 		if (a.exp < b.exp) return 1;
 	});
-
-	const name = global.data.userName.get(event.senderID) || await Users.getNameUser(event.senderID);
+  
+ 
+if (args.length == 0) {
+ const name = global.data.userName.get(event.senderID) || await Users.getNameUser(event.senderID);
   const listUserID = event.participantIDs
     var id = listUserID
       exp = [];
@@ -190,12 +199,57 @@ module.exports.run = async function ({ event, api, Currencies, Users }) {
       exp.push({"name" : idUser.name, "exp": (typeof countMess.exp == "undefined") ? 0 : countMess.exp, "uid": idUser});
   }
       exp.sort(function (a, b) { return b.exp - a.exp });
-      const rank = exp.findIndex(info => parseInt(info.uid) == parseInt(event.senderID)) + 1;   const infoUser = exp[rank - 1];
-      
-		if (rank == 0) return api.sendMessage("Your name is currently not available in the database maybe you're a newbie please increase your keyboard level by chatting on this group\n\nDeveloped by: 𝑯𝑬𝑴𝑨𝑵𝑮 𝑺𝑯𝑬𝑶𝑹𝑨𝑵", event.threadID, event.messageID);
+      const pek = exp.findIndex(info => parseInt(info.uid) == parseInt(event.senderID)) + 1; const infoUser = exp[pek- 1];
+ const rank = dataAll.findIndex(item => parseInt(item.userID) == parseInt(event.senderID)) + 1; 
+
+  
+		if (rank == 0) return api.sendMessage("You are currently not in the database so can't see your rank, please try again in 5 seconds.", event.threadID, event.messageID);
 
 		const point = await this.getInfo(event.senderID, Currencies);
 		let pathRankCard = await this.makeRankCard({ id: event.senderID, name, rank, ...point })
-
-		return api.sendMessage({body: `Name: ${name}\nTop: ${rank} \nNumber of messages: ${infoUser.exp}`, attachment: fs.createReadStream(pathRankCard) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
+  api.setMessageReaction("✅", event.messageID, (err) => {}, true)
+		return api.sendMessage({body: `Name: ${name}\nTop: ${rank} \nTotal messages: ${infoUser.exp}`, attachment: fs.createReadStream(pathRankCard) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
+}                                       
+                                
+	if (mention.length == 1) {
+    
+  const listUserID = event.participantIDs
+    var id = listUserID
+      exp = [];
+      for(const idUser of listUserID) {
+      const countMess = await Currencies.getData(idUser) || await Currencies.getData(id);
+      exp.push({"name" : idUser.name, "exp": (typeof countMess.exp == "undefined") ? 0 : countMess.exp, "uid": idUser});
   }
+      exp.sort(function (a, b) { return b.exp - a.exp });
+      const pek = exp.findIndex(info => parseInt(info.uid) == parseInt(mention[0])) + 1; const infoUser = exp[pek- 1];
+		const rank = dataAll.findIndex(item => parseInt(item.userID) == parseInt(mention[0])) + 1;
+	const name = global.data.userName.get(mention[0]) || await Users.getNameUser(mention[0]);
+		if (rank == 0) return api.sendMessage("Error❌ Please try again in 5 seconds.", event.threadID, event.messageID);
+		let point = await this.getInfo(mention[0], Currencies);
+		let pathRankCard = await this.makeRankCard({ id: mention[0], name, rank, ...point })
+    api.setMessageReaction("✅", event.messageID, (err) => {}, true)
+		return api.sendMessage({body: `Name: ${name}\nTop: ${rank} \nTotal messages: ${infoUser.exp}`, attachment: fs.createReadStream(pathRankCard) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
+	}
+	if (mention.length > 1) {
+		for (const userID of mention) {
+      
+const listUserID = event.participantIDs
+    var id = listUserID
+      exp = [];
+      for(const idUser of listUserID) {
+      const countMess = await Currencies.getData(idUser) || await Currencies.getData(id);
+      exp.push({"name" : idUser.name, "exp": (typeof countMess.exp == "undefined") ? 0 : countMess.exp, "uid": idUser});
+  }
+      exp.sort(function (a, b) { return b.exp - a.exp });
+      const pek = exp.findIndex(info => parseInt(info.uid) == parseInt(idUser)) + 1; const infoUser = exp[pek- 1];
+	
+			const rank = dataAll.findIndex(item => parseInt(item.userID) == parseInt(userID)) + 1;
+  //  const infoUser = exp[rank - 1];
+		const name = global.data.userName.get(userID) || await Users.getNameUser(userID);
+			if (rank == 0) return api.sendMessage("Error❌ Please try again in 5 seconds.", event.threadID, event.messageID);
+			let point = await this.getInfo(userID, Currencies);
+			let pathRankCard = await this.makeRankCard({ id: userID, name, rank, ...point })
+			return api.sendMessage({body: `Name: ${name}\nTop: ${rank} \nTotal messages: ${infoUser.exp}`, attachment: fs.createReadStream(pathRankCard) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
+		}
+	}
+}

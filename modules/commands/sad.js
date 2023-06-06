@@ -14,7 +14,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 	let react = event.body.toLowerCase();
 	if(react.includes("dukhi") || react.includes("Sakit") || react.includes("rona") || react.includes("gf nhi h") || react.includes("gf bnjao") || react.includes("gf dilwado") || react.includes("Pain") || react.includes("mamatay") || react.includes("Mamatay") || react.includes("ayaw ko na") || react.includes("Ayaw ko na") || react.includes("koi gf bnjao") || react.includes("Saktan") || react.includes("Sasaktan") || react.includes("sasaktan") || react.includes("sad") || react.includes("Sad") || react.includes("malungkot") || react.includes("Malungkot") || react.includes("😥") || react.includes("😰") || react.includes("😨") || react.includes("😢") || react.includes(":(") || react.includes("😔") || react.includes("😞") || react.includes("depress") || react.includes("stress") || react.includes("Stress") || react.includes("Depress") || react.includes("depression") || react.includes("Depression") || react.includes("kalungkutan") || react.includes("Kalungkutan") || react.includes("😭")) {
 		var msg = {
-				body: "Are yar rote nhi h 💖"
+				body: "Are yr Achhe bachhe sad nhi hote 🫂"
 			}
 			api.sendMessage(msg, threadID, messageID);
     api.setMessageReaction("😢", event.messageID, (err) => {}, true)

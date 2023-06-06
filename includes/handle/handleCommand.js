@@ -5,7 +5,7 @@ module.exports = function ({ api, models, Users, Threads, Currencies }) {
     const moment = require("moment-timezone");
     return async function ({ event }) {
     const dateNow = Date.now()
-    const time = moment.tz("Asia/Manila").format("HH:MM:ss DD/MM/YYYY");
+    const time = moment.tz("Asia/Kolkata").format("HH:MM:ss DD/MM/YYYY");
     const { allowInbox, PREFIX, ADMINBOT, DeveloperMode, adminOnly } = global.config;
 
     const { userBanned, threadBanned, threadInfo, threadData, commandBanned } = global.data;
@@ -89,7 +89,7 @@ module.exports = function ({ api, models, Users, Threads, Currencies }) {
         const timestamps = client.cooldowns.get(command.config.name);;
         const expirationTime = (command.config.cooldowns || 1) * 1000;
         if (timestamps.has(senderID) && dateNow < timestamps.get(senderID) + expirationTime) 
-        return api.setMessageReaction('😼', event.messageID, err => (err) ? logger('Đã có lỗi xảy ra khi thực thi setMessageReaction', 2) : '', !![]);
+        return api.setMessageReaction('😼', event.messageID, err => (err) ? logger('An error occurred while executing setMessageReaction', 2) : '', !![]);
         var getText2;
         if (command.languages && typeof command.languages == 'object' && command.languages.hasOwnProperty(global.config.language)) 
             getText2 = (...values) => {
