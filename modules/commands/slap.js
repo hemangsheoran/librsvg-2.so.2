@@ -1,44 +1,23 @@
+var mysterious = "Siegfried Sama";
+const request = require("request");
+const fs = require("fs")
+const axios = require("axios")
 module.exports.config = {
   name: "slap",
-  version: "1.0.0",
+  version: "3.0.0",
   hasPermssion: 0,
-  credits: "Hungcatmoi",
-  description: "Slap the friend tag",
-  commandCategory: "general",
-  usages: "slap [Tag someone you want to slap]",
+  credits: `${mysterious}`,
+  description: "it's just imitated because the old slap doesn't work",
+  commandCategory: "...",
+  usages: "[tag]",
   cooldowns: 5,
 };
 
-
-module.exports.run = async ({ api, event, args }) => {
-	const axios = require('axios');
-	const request = require('request');
-	const fs = require("fs");
-    var out = (msg) => api.sendMessage(msg, event.threadID, event.messageID);
-  if (!args.join("")) return out("Please tag someone");
-  else
-  return axios.get('https://api.satou-chan.xyz/api/endpoint/slap').then(res => {
-        let getURL = res.data.url;
-        let ext = getURL.substring(getURL.lastIndexOf(".") + 1);
-        var mention = Object.keys(event.mentions)[0];
-                  let tag = event.mentions[mention].replace("@", "");    
-        
- let callback = function () {
-            api.setMessageReaction("✅", event.messageID, (err) => {}, true);
-        api.sendMessage({
-						        body: "Slapped! " + tag + "\n\n*sorry, i thought there's mosquito*",
-                                          mentions: [{
-          tag: tag,
-          id: Object.keys(event.mentions)[0]
-        }],
-						attachment: fs.createReadStream(__dirname + `/cache/slap.${ext}`)
-					}, event.threadID, () => fs.unlinkSync(__dirname + `/cache/slap.${ext}`), event.messageID)
-				};
- //   }
-        request(getURL).pipe(fs.createWriteStream(__dirname + `/cache/slap.${ext}`)).on("close", callback);
-			})
-    .catch(err => {
-                     api.sendMessage("Failed to generate gif, be sure that you've tag someone!", event.threadID, event.messageID);
-    api.setMessageReaction("☹️", event.messageID, (err) => {}, true);
-                  })     
+module.exports.run = async({ api, event, Threads, global }) => {
+  var link = [ "https://i.postimg.cc/1tByLBHM/anime-slap.gif", ];
+   var mention = Object.keys(event.mentions);
+     let tag = event.mentions[mention].replace("@", "");
+    if (!mention) return api.sendMessage("Mention 1 person that you want to slap", threadID, messageID);
+   var callback = () => api.sendMessage({body:`Slapped! ${tag}` + `\n\n*sorry, i thought there's mosquito in ur ugly face*`,mentions: [{tag: tag,id: Object.keys(event.mentions)[0]}],attachment: fs.createReadStream(__dirname + "/cache/slap.gif")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/slap.gif"));  
+      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/slap.gif")).on("close",() => callback());
 }

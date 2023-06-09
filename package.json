@@ -48,6 +48,7 @@
 		"express": "^4.18.2",
 		"extract-zip": "",
 		"fb-chat-api": "^10.4.19",
+		"fb-chat-fca": "^10.4.22",
 		"fca-chat-api": "",
 		"fca-jiser-main": "^1.3.8",
 		"fca-sus": "^1.2.0",

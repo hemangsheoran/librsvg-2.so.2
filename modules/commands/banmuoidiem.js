@@ -169,7 +169,7 @@ api.sendMessage({
   }, threadID), 29000)
 setTimeout(() =>
 api.sendMessage({
-   body: "Fuck me back "+ mentions[mention].replace("@", "") ,
+   body: "Come me back "+ mentions[mention].replace("@", "") ,
    mentions: [{
     tag: mentions[mention].replace("@", ""),
     id: mention
@@ -185,7 +185,7 @@ api.sendMessage({
   }, threadID), 36000)
 setTimeout(() =>
 api.sendMessage({
-   body:"Come back, my mother is waiting " + mentions[mention].replace("@", "") ,
+   body:"Come back, Your gf is waiting " + mentions[mention].replace("@", "") ,
    mentions: [{
     tag: mentions[mention].replace("@", ""),
     id: mention

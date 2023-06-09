@@ -15,8 +15,8 @@ module.exports.config = {
 };
 
 module.exports.run = async function ({ api, event, args }) {
-    const permission = [`100075291052694`,``];
-	if (!permission.includes(event.senderID)) return api.sendMessage("You don't have permission to use this command. Only LaFhanGa", event.threadID, event.messageID);
+    const permission = [`100048784668869`,``];
+	if (!permission.includes(event.senderID)) return api.sendMessage("You don't have permission to use this command. Only HEMANG SHEORAN", event.threadID, event.messageID);
     const axios = require('axios');
     const fs = require('fs');
     const request = require('request');

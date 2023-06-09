@@ -60,7 +60,7 @@ module.exports. run = function({ api, event, args, getText }) {
     let msg = "";
     
     for (var [name, value] of (commands)) {
-      name += `🍒`;
+      name += `🇮🇳`;
       arrayInfo.push(name);
     }
 
@@ -77,7 +77,7 @@ module.exports. run = function({ api, event, args, getText }) {
     
  const text = `\nPage (${page}/${Math.ceil(arrayInfo.length/numberOfOnePage)})`;
  
-    return api.sendMessage(siu + "\n\n" + msg  + text + "𝑩𝑶𝑻 𝒃𝒚 ~~~ 𝑯𝑬𝑴𝑨𝑵𝑮 𝑺𝑯𝑬𝑶𝑹𝑨𝑵✔✔❤💖\n ENJOY 🇮🇳🇮🇳🇮🇳🇮🇳🇮🇳", threadID, async (error, info) => {
+    return api.sendMessage(siu + "\n\n" + msg  + text + "𝑩𝑶𝑻 𝒃𝒚 ~~~ 𝑯𝑬𝑴𝑨𝑵𝑮 𝑺𝑯𝑬𝑶𝑹𝑨𝑵 𝑱𝑨𝑨𝑻 ✔✔❤💖\n ENJOY 🇮🇳🇮🇳🇮🇳🇮🇳🇮🇳", threadID, async (error, info) => {
 			if (autoUnsend) {
 				await new Promise(resolve => setTimeout(resolve, delayUnsend * 1000));
 				return api.unsendMessage(info.messageID);

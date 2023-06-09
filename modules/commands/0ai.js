@@ -1,4 +1,4 @@
-const { Configuration, OpenAIApi } = require("openai");
+const axios = require('axios');
 
 module.exports.config = {
   name: "ai",
@@ -9,33 +9,31 @@ module.exports.config = {
   commandCategory: "utilities",
   usages: "cmdname [question]",
   cooldowns: 5,
-  dependencies: {
-    "openai": ""
-  }
 };
 
 module.exports.run = async function({ api, event, args }) {
-  const configuration = new Configuration({
-    apiKey: "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"
-  });
+  const apiKey = "YOUR_OPENAI_API_KEY";
+  const prompt = args.join(" ");
 
-  const openai = new OpenAIApi(configuration);
-
-  let data = args.join(" ");
-  if (data.length < 1) {
-    api.sendMessage("Wrong use of command. Missing content!\n /ai (question)", event.threadID);
+  if (prompt.length < 1) {
+    api.sendMessage("Wrong use of command. Missing content!\n/ai (question)", event.threadID);
   } else {
     try {
-      const completion = await openai.createCompletion({
-        model: "text-davinci-002",
-        prompt: args.join(" "),
-        temperature: 0.5,
-        max_tokens: 2000,
-        top_p: 0.3,
-        frequency_penalty: 0.5,
-        presence_penalty: 0.0,
+      const response = await axios.post('https://api.openai.com/v1/engines/davinci/completions', {
+        prompt: prompt,
+        max_tokens: 200,
+        temperature: 0.7,
+        n: 1,
+        stop: null,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
+        },
       });
-      api.sendMessage(completion.data.choices[0].text, event.threadID, event.messageID);
+
+      const completion = response.data.choices[0].text;
+      api.sendMessage(completion, event.threadID, event.messageID);
     } catch (error) {
       if (error.response) {
         console.log(error.response.status);
