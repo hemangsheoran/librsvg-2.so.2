@@ -16,7 +16,7 @@ module.exports.config = {
 module.exports.run = async({api, event, args}) => {
 	const fs = global.nodemodule["fs-extra"];
 	const request = global.nodemodule["request"];
-	 if (args.length == 0) return api.sendMessage(`You can use:\n/groupemoji [icon]\n\n/groupname [the box name needs to be changed]\n\n/groupimage [rep any image needs to be set as group chat image]\n\n/gcadmin [tag] => it will give qtv to the person tagged\n\n/groupinfo => All group information !
+	 if (args.length == 0) return api.sendMessage(`You can use:\n.group emoji [icon]\n\n.group name [the box name needs to be changed]\n\n.group image [rep any image needs to be set as group chat image]\n\n.gcadmin [tag] => it will give qtv to the person tagged\n\n.group info => All group information !
 `, event.threadID, event.messageID);
 
 
@@ -116,4 +116,4 @@ const name = infu[qtv2[i].id].name;
 				.on('close', () => callback());
 
 	}	  
-}
+    }

@@ -22,7 +22,7 @@ module.exports.onLoad = async() => {
     const dirMaterial = __dirname + `/cache/canvas/`;
     const path = resolve(__dirname, 'cache/canvas', 'totinh.png');
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://i.imgur.com/P7sBv2p.png", path);
+    if (!existsSync(path)) await downloadFile("https://i.postimg.cc/0N9D23rt/Screenshot-2023-10-03-03-38-37-461-com-android-chrome-edit.jpg", path);
 }
 
 async function makeImage({ one, two }) {
@@ -66,11 +66,11 @@ module.exports.run = async function ({ event, api, args }) {
     const fs = global.nodemodule["fs-extra"];
     const { threadID, messageID, senderID } = event;
     var mention = Object.keys(event.mentions);
-    if (!mention[0]) return api.sendMessage(`Please tag 1 person\n\nHow to use?\n${global.config.PREFIX}confess <@tag>\n\nExample:\n${global.config.PREFIX}confess @name\n\nCreated by: CaNDY (LaFhanGa chokra)`, threadID, messageID);
+    if (!mention[0]) return api.sendMessage(`Please tag 1 person\n\nHow to use?\n${global.config.PREFIX}confess <@tag>\n\nExample:\n${global.config.PREFIX}confess @name\n\nCreated by: Hemang Sheoran (LaFhanGa chokra)`, threadID, messageID);
     else {
       let tag = event.mentions[mention].replace("@", "");
         var one = senderID, two = mention;
-        return makeImage({ one, two }).then(path => api.sendMessage({ body: "i love you CaNdY" + tag + ' ',
+        return makeImage({ one, two }).then(path => api.sendMessage({ body: "I love you " + tag + '💐 😘',
             mentions: [{
           tag: tag,
           id: mention

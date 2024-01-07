@@ -30,7 +30,7 @@ module.exports.onLoad = async() => {
     const dirMaterial = __dirname + `/cache/canvas/`;
     const path = resolve(__dirname, 'cache/canvas', 'slap.png');
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://git.meewmeew.info/data/slap.png", path);
+    if (!existsSync(path)) await downloadFile("https://i.postimg.cc/BbccHJy3/images-1.jpg", path);
 }
 async function makeImage({ one, two }) {    
     const { APIKEY } = global.configModule.slap;

@@ -17,11 +17,7 @@ module.exports.config = {
 };
 
 module.exports.makeRankCard = async (data) => {    
-    /*
-    * 
-    * Remake from Canvacord
-    * 
-    */
+  
 
     const fs = global.nodemodule["fs-extra"];
     const path = global.nodemodule["path"];

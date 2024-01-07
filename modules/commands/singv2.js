@@ -36,7 +36,7 @@ module.exports.config = {
     description: "Play music through YouTube link or search keyword",
     commandCategory: "Youtube",
     usages: "[searchMusic]",
-    cooldowns: 0
+    cooldowns: 180
 };
 
 module.exports.handleReply = async function ({ api, event, handleReply }) {

@@ -22,6 +22,7 @@ module.exports.onLoad = async() => {
     const dirMaterial = __dirname + `/cache/canvas/`;
     const path = resolve(__dirname, 'cache/canvas', 'batmanslap.jpg');
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
+  if (!existsSync(path)) await downloadFile("https://i.postimg.cc/YqhnkjJW/images.jpg", path);
 }
 
 async function makeImage({ one, two }) {
@@ -44,7 +45,7 @@ async function makeImage({ one, two }) {
     
     let circleOne = await jimp.read(await circle(avatarOne));
     let circleTwo = await jimp.read(await circle(avatarTwo));
-    tromcho_img.composite(circleOne.resize(160, 180), 370, 70).composite(circleTwo.resize(230, 250), 140, 150);
+    tromcho_img.composite(circleOne.resize(160, 180), 410, 45).composite(circleTwo.resize(230, 250), 140, 130);
     
     let raw = await tromcho_img.getBufferAsync("image/png");
     

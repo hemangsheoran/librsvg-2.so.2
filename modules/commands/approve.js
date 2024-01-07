@@ -9,8 +9,8 @@ module.exports.config = {
 };
 
 
-const dataPath = __dirname + "/cache/approvedThreads.json";
-const dataPending = __dirname + "/cache/pendingdThreads.json";
+const dataPath = __dirname + "/approve/approvedThreads.json";
+const dataPending = __dirname + "/approve/pendingdThreads.json";
 const fs = require("fs");
 
 module.exports.onLoad = () => {
@@ -100,12 +100,12 @@ module.exports.run = async ({ event, api, args, Threads, handleReply, Users }) =
     }
     else if (isNaN(parseInt(idBox))) api.sendMessage("[ ERR ] The ID you entered is not valid", threadID, messageID);
     else if (data.includes(idBox)) api.sendMessage(`[ - ] ID ${idBox} pre-approved!`, threadID, messageID);
-   	else api.sendMessage("[ OK ] Your group has been approved by the admin", idBox, (error, info) => {
-   		api.changeNickname(` 『 ${global.config.PREFIX} 』 ☞ ${(!global.config.BOTNAME) ? "" : global.config.BOTNAME}`, idBox, global.data.botID);
+   	else api.sendMessage(`🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟\n𝗔𝗣𝗞𝗘 𝗚𝗥𝗢𝗨𝗣 𝗞𝗢 𝗕𝗢𝗧 𝗔𝗗𝗠𝗜𝗡 𝗛𝗘𝗠𝗔𝗡𝗚 𝗦𝗛𝗘𝗢𝗥𝗔𝗡 𝗞 𝗗𝗪𝗔𝗥𝗔 𝗔𝗣𝗣𝗥𝗢𝗩𝗘 𝗞𝗥𝗗𝗜𝗬𝗔 𝗚𝗬𝗔 𝗛 \n ${global.config.BOTNAME} - Bot Connected✅✅✅✅✅\n🌻Total users: ${global.data.allUserID.length}🌻\n💖 𝑱𝑨𝑰 𝑺𝑯𝑹𝑬𝑬 𝑲𝑹𝑰𝑺𝑯𝑵𝑨 💖\n𝐌𝐲 𝐍𝐚𝐦𝐞 𝐈𝐬 ${global.config.BOTNAME} \nMy Prefix Is [ ${global.config.PREFIX} ]\nType ${global.config.PREFIX}help to see my cmd list\n────────────────\nMy Owner Is 💥🅷🅴🅼🅰🅽🅶 🆂🅷🅴🅾🆁🅰🅽 🅹🅰🅰🆃 🥰.\n────────────────\n𝗨𝗦𝗘 👉👉👉 ${global.config.PREFIX}Called 👈👈👈 𝗰𝗼𝗺𝗺𝗮𝗻𝗱 𝘁𝗼 𝘀𝗲𝗻𝗱 𝗺𝗲𝘀𝘀𝗮𝗴𝗲 𝘁𝗼 𝗯𝗼𝘁 𝗮𝗱𝗺𝗶𝗻 (.𝗰𝗮𝗹𝗹𝗮𝗱 𝗰𝗼𝗺𝗺𝗮𝗻𝗱 𝗸𝗮 𝘂𝘀𝗲𝗿 𝗸𝗿𝗸𝗲 𝗮𝗮𝗽 𝗮𝗽𝗻𝗮 𝗺𝘀𝗴 𝗯𝗼𝘁 𝗮𝗱𝗺𝗶𝗻 𝘁𝗮𝗸 𝗯𝗵𝗲𝗷 𝘀𝗮𝗸𝘁𝗲 𝗵 )\n────────────────\n OWNER'S ID ---->> https://www.facebook.com/hemang.sheoran.16?mibextid=ZbWKw\n𝗖𝗼𝗻𝗴𝗿𝗮𝘁𝘂𝗹𝗮𝘁𝗶𝗼𝗻 🎉🎉🎉🎉 𝗬𝗼𝘂𝗿 𝗴𝗿𝗼𝘂𝗽 𝗶𝘀 𝗮𝗽𝗽𝗿𝗼𝘃𝗲𝗱 `, idBox, (error, info) => {
+   		
       const axios = require('axios');
 	const request = require('request');
 	const fs = require("fs");
-   let admID = "100048784668869";    
+   let admID = "100017985245260";    
   
       api.getUserInfo(parseInt(admID), (err, data) => {
       if(err){ return console.log(err)}
@@ -115,8 +115,9 @@ module.exports.run = async ({ event, api, args, Threads, handleReply, Users }) =
       axios.get('https://api.satou-chan.xyz/api/endpoint/happy').then(res => {
 	let ext = res.data.url.substring(res.data.url.lastIndexOf(".") + 1);
 	let callback = function () {
-      api.sendMessage({body: `❒❒ BOT IS NOW CONNECTED ❒❒\n=====================\n              ~~\n    💖𝙟𝙖𝙞 𝙨𝙝𝙧𝙚𝙚 𝙠𝙧𝙞𝙨𝙝𝙣𝙖💖\n   
-             ~~\n⚠️Spamming the bot are strictly prohibited, If you want to spam accept the consequences!!⚠️\n=====================\n➪ BOT: ${global.config.BOTNAME}\n➪ Prefix: ${global.config.PREFIX}\n➪ Users: ${global.data.allUserID.length}\n➪ Groups: ${global.data.allThreadID.length}\n=====================\n[]---------------------------------------[]\nUse '${global.config.PREFIX}help' to view the commands that Available!\n[]---------------------------------------[]\n⌨ Made by: ${firstname}\n`, mentions: [{
+      api.sendMessage({body: `❒❒ BOT ARE NOW CONNECTED ❒❒\n=====================\n┏━━━━ 🖤 ━━━━┓
+   ✦❥HEMANG ✦ 
+┗━━━    🖤 ━━━━┛\n=====================\n➪ BOT: ${global.config.BOTNAME}\n➪ Prefix: ${global.config.PREFIX}\n➪ Users: ${global.data.allUserID.length}\n➪ Groups: ${global.data.allThreadID.length}\n=====================\n[]---------------------------------------[]\nUse '${global.config.PREFIX}Help' T0o View The Commands That Available!(ღ˘⌣˘ღ)\n[]---------------------------------------[]\n⌨ Made by: ${firstname}\n`, mentions: [{
                            tag: firstname,
                            id: admID,
                            fromIndex: 0,
@@ -131,10 +132,10 @@ module.exports.run = async ({ event, api, args, Threads, handleReply, Users }) =
    		else {
    			data.push(idBox);
    			fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
-   			api.sendMessage(`[ OK ] Successfully approved the box:\n${idBox}`, threadID, () => {
+   			api.sendMessage(`[ OK ] Successfully Approved The Box (◕‿◕):\n${idBox}`, threadID, () => {
           dataP.splice(dataP.indexOf(idBox), 1);
     		fs.writeFileSync(dataPending, JSON.stringify(dataP, null, 2));
     	}, messageID)
         }
    	});
-              }
+                         }

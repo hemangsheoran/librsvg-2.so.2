@@ -6,7 +6,7 @@ module.exports.config = {
 	description: "Play music via YouTube link, SoundCloud or search keyword",
 	commandCategory: "media",
 	usages: "[link or content need search]",
-	cooldowns: 10,
+	cooldowns: 180,
 	dependencies: {
 		"ytdl-core": "",
 		"simple-youtube-api": "",

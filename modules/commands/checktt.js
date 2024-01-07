@@ -5,7 +5,7 @@ module.exports.config = {
 	credits: "SenProject",
 	description: "interactive check",
 	commandCategory: "Utilities",
-	usages: "checktt",
+	usages: "apni rank dekhne k liye .checktt use kare, or group m ab tak k sabhi logo ki rank dekhne k liye .checktt all ka use kare",
 	cooldowns: 5,
 	dependencies: {
 		"fs-extra": ""

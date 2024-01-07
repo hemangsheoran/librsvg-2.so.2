@@ -31,8 +31,8 @@ module.exports.run = async function({ api, event, getText, Threads }) {
 		if (dataThread.adminIDs.some(item => item.id == event.senderID)) {
 			for (const o in mention) {
 				setTimeout(() => {
-					api.removeUserFromGroup(mention[o],event.threadID) 
-				},3000)
+					api.removeUserFromGroup(mention[0],event.threadID) 
+				},2000)
 			}
 		}
 	} catch { return api.sendMessage(getText("error"),event.threadID) }

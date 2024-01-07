@@ -32,7 +32,7 @@ module.exports.run = async function({ api, event, Users, Currencies }) {
         arraytag.push({id: event.senderID, tag: namee});
         arraytag.push({id: id, tag: name});
                 
-        api.changeNickname(`wife ${name}`, event.threadID, event.senderID);
+        api.changeNickname(`wife of ${name}`, event.threadID, event.senderID);
         api.changeNickname(`husband of ${namee}`, event.threadID, id);
         Currencies.setData(event.senderID, options = {money: money - 696})
   

@@ -14,10 +14,10 @@ module.exports.config = {
   usages: "cardbox [name]",
   cooldowns: 10,
   dependencies: {
-    canvas: "",
-    axios: "",
-    "fs-extra": "",
-  },
+    "canvas": "",
+    "axios": "",
+    "fs-extra": ""
+  }
 };
 
 module.exports.circle = async (image) => {

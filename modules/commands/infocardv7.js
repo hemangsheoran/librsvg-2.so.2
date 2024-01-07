@@ -9,10 +9,10 @@ module.exports.config = {
   commandCategory: "info",
   cooldowns: 2,
   dependencies: {
-    canvas: "",
-    axios: "",
-    "fs-extra": "",
-  },
+    "canvas": "",
+    "axios": "",
+    "fs-extra": ""
+  }
 };
 
 module.exports.circle = async (image) => {

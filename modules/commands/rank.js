@@ -53,8 +53,8 @@ module.exports.makeRankCard = async (data) => {
 //edit the number of rankcard photos to random
 	const pathCustom = path.resolve(__dirname, "cache", "customrank");
 	var customDir = fs.readdirSync(pathCustom);
-	let random = Math.floor(Math.random() * 9) + 1;
-	    var dirImage = __root + "/rankcard" + random + ".png";
+	
+	    var dirImage = __root + "/rankcard6.png";
 
 
 	customDir = customDir.map(item => item.replace(/\.png/g, ""));
@@ -94,36 +94,36 @@ module.exports.makeRankCard = async (data) => {
 	ctx.drawImage(await Canvas.loadImage(avatar), 45, 50, 180, 180);
 
 	ctx.font = `bold 36px Manrope`;
-	ctx.fillStyle = getRandomColor();
+	ctx.fillStyle = '#06fafe';
 	ctx.textAlign = "start";
-	ctx.fillText(name, 270, 164);
+	ctx.fillText(name, 290, 164);
 	ctx.font = `36px Manrope`;
-	ctx.fillStyle = getRandomColor();
+	ctx.fillStyle = '#06fafe';
 	ctx.textAlign = "center";
 
-	ctx.font = `bold 35px Manrope`;
-	ctx.fillStyle = getRandomColor();
+	ctx.font = `bold 37px Manrope`;
+	ctx.fillStyle = '#06fe68';
 	ctx.textAlign = "end";
 	ctx.fillText(level, 610 - 55, 82);
-	ctx.fillStyle = getRandomColor();
+	ctx.fillStyle = '#E0fe06';
 	ctx.fillText("Level:", 610 - 55 - ctx.measureText(level).width - 10, 82);
 
 	ctx.font = `bold 32px Manrope`;
-	ctx.fillStyle = getRandomColor();
+	ctx.fillStyle = '#00ffff';
 	ctx.textAlign = "end";
 	ctx.fillText(rank, 934 - 55 - ctx.measureText(level).width - 16 - ctx.measureText(`Lv.`).width - 25, 82);
-	ctx.fillStyle = getRandomColor();
+	ctx.fillStyle = '#f2f2f2';
 	ctx.fillText("#", 934 - 55 - ctx.measureText(level).width - 16 - ctx.measureText(`Lv.`).width - 16 - ctx.measureText(rank).width - 16, 82);
 
 	ctx.font = `bold 26px Manrope`;
-	ctx.fillStyle = getRandomColor();
+	ctx.fillStyle = '#f2f2f2';
 	ctx.textAlign = "start";
 	ctx.fillText("/ " + expNextLevel, 710 + ctx.measureText(expCurrent).width + 10, 164);
-	ctx.fillStyle = getRandomColor();
+	ctx.fillStyle = '#06fe28';
 	ctx.fillText(expCurrent, 710, 164);
 
 	ctx.beginPath();
-	ctx.fillStyle = getRandomColor();
+	ctx.fillStyle = '#08df00';
 	ctx.arc(257 + 18.5, 147.5 + 18.5 + 36.25, 18.5, 1.5 * PI, 0.5 * PI, true);
 	ctx.fill();
 	ctx.fillRect(257 + 18.5, 147.5 + 36.25, expWidth, 37.5);
@@ -169,11 +169,8 @@ module.exports.onLoad = async function () {
 //File download function is available including font or rankcard (can be changed)
     if (!existsSync(resolve(__dirname, 'cache', 'regular-font.ttf'))) await downloadFile("https://github.com/J-JRT/JRT_main/blob/mainV2/modules/commands/cache/regular-font.ttf?raw=true", resolve(__dirname, 'cache', 'regular-font.ttf'));
 	if (!existsSync(resolve(__dirname, 'cache', 'bold-font.ttf'))) await downloadFile("https://github.com/J-JRT/JRT_main/blob/mainV2/modules/commands/cache/bold-font.ttf?raw=true", resolve(__dirname, 'cache', 'bold-font.ttf'));
-	if (!existsSync(resolve(__dirname, 'cache', 'rankcard.png'))) await downloadFile("https://github.com/J-JRT/JRT_main/raw/mainV2/modules/commands/cache/rankcard.png", resolve(__dirname, 'cache', 'rankcard.png'));
-  if (!existsSync(resolve(__dirname, 'cache', 'rankcard1.png'))) await downloadFile("https://imgur.com/cD7W8yS.png", resolve(__dirname, 'cache', 'rankcard1.png'));
-  if (!existsSync(resolve(__dirname, 'cache', 'rankcard1.png'))) await downloadFile("https://imgur.com/cD7W8yS.png", resolve(__dirname, 'cache', 'rankcard1.png'));
-  if (!existsSync(resolve(__dirname, 'cache', 'rankcard2.png'))) await downloadFile("https://imgur.com/AVkl1ON.png", resolve(__dirname, 'cache', 'rankcard2.png'));
-  if (!existsSync(resolve('modules', 'events', 'joinGIF', 'join.gif'))) await downloadFile("https://github.com/GIANJAJAHAHAHA/JRT_main/raw/mainV2/VID_20220710152453%20(1).gif", resolve('modules', 'events', 'joinGIF', 'join.gif'));
+  if (!existsSync(resolve(__dirname, 'cache', 'rankcard6.png'))) await downloadFile("https://i.postimg.cc/dQ5h1qrx/Picsart-23-10-05-23-28-37-973-min.png", resolve(__dirname, 'cache', 'rankcard6.png'));
+  
 
 }
 
@@ -207,8 +204,14 @@ if (args.length == 0) {
 
 		const point = await this.getInfo(event.senderID, Currencies);
 		let pathRankCard = await this.makeRankCard({ id: event.senderID, name, rank, ...point })
+
+const msg = infoUser.exp;
+  const level1 = this.expToLevel(msg);
+	const expNextLevel1 = this.levelToExp(level1 + 1) - msg;
+
+  
   api.setMessageReaction("✅", event.messageID, (err) => {}, true)
-		return api.sendMessage({body: `Name: ${name}\nTop: ${rank} \nTotal messages: ${infoUser.exp}`, attachment: fs.createReadStream(pathRankCard) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
+		return api.sendMessage({body: `           𝗥𝗔𝗡𝗞𝗖𝗔𝗥𝗗\n𝐍𝐚𝐦𝐞:->${name}\n𝐑𝐚𝐧𝐤:->   ${rank} \n𝐓𝐨𝐭𝐚𝐥 𝐦𝐞𝐬𝐬𝐚𝐠𝐞𝐬:-->   ${infoUser.exp}\n𝐋𝐞𝐯𝐞𝐥:-->   ${level1}  \n𝐌𝐬𝐠 𝐑𝐞𝐪𝐮𝐢𝐫𝐞𝐝 𝐟𝐨𝐫 𝐍𝐞𝐱𝐭 𝐋𝐞𝐯𝐞𝐥:-->   ${expNextLevel1}\n               ©- 𝑯𝒆𝒎𝒂𝒏𝒈 𝑺𝒉𝒆𝒐𝒓𝒂𝒏'𝒔 𝑩𝑶𝑻`, attachment: fs.createReadStream(pathRankCard) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
 }                                       
                                 
 	if (mention.length == 1) {
@@ -224,11 +227,18 @@ if (args.length == 0) {
       const pek = exp.findIndex(info => parseInt(info.uid) == parseInt(mention[0])) + 1; const infoUser = exp[pek- 1];
 		const rank = dataAll.findIndex(item => parseInt(item.userID) == parseInt(mention[0])) + 1;
 	const name = global.data.userName.get(mention[0]) || await Users.getNameUser(mention[0]);
-		if (rank == 0) return api.sendMessage("Error❌ Please try again in 5 seconds.", event.threadID, event.messageID);
+		if (rank == 0) return api.sendMessage("Your Rank is lower than 5, Please try again later.", event.threadID, event.messageID);
 		let point = await this.getInfo(mention[0], Currencies);
+
+const msg = infoUser.exp;
+  const level1 = this.expToLevel(msg);
+	const expNextLevel1 = this.levelToExp(level1 + 1) - msg;
+
+
+    
 		let pathRankCard = await this.makeRankCard({ id: mention[0], name, rank, ...point })
     api.setMessageReaction("✅", event.messageID, (err) => {}, true)
-		return api.sendMessage({body: `Name: ${name}\nTop: ${rank} \nTotal messages: ${infoUser.exp}`, attachment: fs.createReadStream(pathRankCard) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
+		return api.sendMessage({body: `           𝗥𝗔𝗡𝗞𝗖𝗔𝗥𝗗\n𝐍𝐚𝐦𝐞:->${name}\n𝐑𝐚𝐧𝐤:->   ${rank} \n𝐓𝐨𝐭𝐚𝐥 𝐦𝐞𝐬𝐬𝐚𝐠𝐞𝐬:-->   ${infoUser.exp}\n𝐋𝐞𝐯𝐞𝐥:-->   ${level1}  \n𝐌𝐬𝐠 𝐑𝐞𝐪𝐮𝐢𝐫𝐞𝐝 𝐟𝐨𝐫 𝐍𝐞𝐱𝐭 𝐋𝐞𝐯𝐞𝐥:-->   ${expNextLevel1}\n               ©- 𝑯𝒆𝒎𝒂𝒏𝒈 𝑺𝒉𝒆𝒐𝒓𝒂𝒏'𝒔 𝑩𝑶𝑻`, attachment: fs.createReadStream(pathRankCard) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
 	}
 	if (mention.length > 1) {
 		for (const userID of mention) {
@@ -246,10 +256,16 @@ const listUserID = event.participantIDs
 			const rank = dataAll.findIndex(item => parseInt(item.userID) == parseInt(userID)) + 1;
   //  const infoUser = exp[rank - 1];
 		const name = global.data.userName.get(userID) || await Users.getNameUser(userID);
-			if (rank == 0) return api.sendMessage("Error❌ Please try again in 5 seconds.", event.threadID, event.messageID);
+			if (rank == 0) return api.sendMessage("Your Rank is lower than 5, Please try again later.", event.threadID, event.messageID);
 			let point = await this.getInfo(userID, Currencies);
+
+const msg = infoUser.exp;
+  const level1 = this.expToLevel(msg);
+	const expNextLevel1 = this.levelToExp(level1 + 1) - msg;
+
+      
 			let pathRankCard = await this.makeRankCard({ id: userID, name, rank, ...point })
-			return api.sendMessage({body: `Name: ${name}\nTop: ${rank} \nTotal messages: ${infoUser.exp}`, attachment: fs.createReadStream(pathRankCard) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
+			return api.sendMessage({body: `           𝗥𝗔𝗡𝗞𝗖𝗔𝗥𝗗\n𝐍𝐚𝐦𝐞:->${name}\n𝐑𝐚𝐧𝐤:->   ${rank} \n𝐓𝐨𝐭𝐚𝐥 𝐦𝐞𝐬𝐬𝐚𝐠𝐞𝐬:-->   ${infoUser.exp}\n𝐋𝐞𝐯𝐞𝐥:-->   ${level1}  \n𝐌𝐬𝐠 𝐑𝐞𝐪𝐮𝐢𝐫𝐞𝐝 𝐟𝐨𝐫 𝐍𝐞𝐱𝐭 𝐋𝐞𝐯𝐞𝐥:-->   ${expNextLevel1}\n               ©- 𝑯𝒆𝒎𝒂𝒏𝒈 𝑺𝒉𝒆𝒐𝒓𝒂𝒏'𝒔 𝑩𝑶𝑻`, attachment: fs.createReadStream(pathRankCard) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
 		}
 	}
 }

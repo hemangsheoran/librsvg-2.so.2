@@ -7,20 +7,94 @@ module.exports = function({ api, models }) {
 	const fs = require("fs");
 	const moment = require('moment-timezone');
 	const axios = require("axios");
+  var day = moment.tz("Asia/Dhaka").day();
+  
+  
+  const checkttDataPath = __dirname + '/../modules/commands/checktt/';
+  setInterval(async() => {
+    const day_now = moment.tz("Asia/Dhaka").day();
+    if (day != day_now) {
+      day = day_now;
+      const checkttData = fs.readdirSync(checkttDataPath);
+      console.log('--> CHECKTT: New Day');
+      checkttData.forEach(async(checkttFile) => {
+        const checktt = JSON.parse(fs.readFileSync(checkttDataPath + checkttFile));
+        let storage = [], count = 1;
+        for (const item of checktt.day) {
+            const userName = await Users.getNameUser(item.id) || 'Facebook User';
+            const itemToPush = item;
+            itemToPush.name = userName;
+            storage.push(itemToPush);
+        };
+        storage.sort((a, b) => {
+            if (a.count > b.count) {
+                return -1;
+            }
+            else if (a.count < b.count) {
+                return 1;
+            } else {
+                return a.name.localeCompare(b.name);
+            }
+        });
+        let checkttBody = '===Top 10 Interactive Days===\n';
+        checkttBody += storage.slice(0, 10).map(item => {
+          return `${count++}. ${item.name} (${item.count})`;
+      }).join('\n');
+        api.sendMessage(checkttBody, checkttFile.replace('.json', ''), (err) => err ? console.log(err) : '');
+        
+        checktt.day.forEach(e => {
+            e.count = 0;
+        });
+        checktt.time = day_now;
+        
+        fs.writeFileSync(checkttDataPath + checkttFile, JSON.stringify(checktt, null, 4));
+      });
+      if (day_now == 1) {
+        console.log('--> CHECKTT: New Week');
+        checkttData.forEach(async(checkttFile) => {
+          const checktt = JSON.parse(fs.readFileSync(checkttDataPath + checkttFile));
+          let storage = [], count = 1;
+          for (const item of checktt.week) {
+              const userName = await Users.getNameUser(item.id) || 'Facebook User';
+              const itemToPush = item;
+              itemToPush.name = userName;
+              storage.push(itemToPush);
+          };
+          storage.sort((a, b) => {
+              if (a.count > b.count) {
+                  return -1;
+              }
+              else if (a.count < b.count) {
+                  return 1;
+              } else {
+                  return a.name.localeCompare(b.name);
+              }
+          });
+          let checkttBody = '===Top 10 Interactive Week===\n';
+          checkttBody += storage.slice(0, 10).map(item => {
+            return `${count++}. ${item.name} (${item.count})`;
+        }).join('\n');
+          api.sendMessage(checkttBody, checkttFile.replace('.json', ''), (err) => err ? console.log(err) : '');
+          checktt.week.forEach(e => {
+              e.count = 0;
+          });
+          
+          fs.writeFileSync(checkttDataPath + checkttFile, JSON.stringify(checktt, null, 4));
+        })
+      }
+      global.client.sending_top = false;
+    }
+  }, 1000 * 10);
+  
 
 	//////////////////////////////////////////////////////////////////////
 	//========= Push all variable from database to environment =========//
 	//////////////////////////////////////////////////////////////////////
-
-
-  
+	
 (async function () {
-  api.markAsReadAll((err) => {
-			if(err) return console.error("Error [Mark as Read All]: " + err)
-			})
 
     try {
-      logger(global.getText('listen', 'startLoadEnvironment'), '[ DATABASE ]');
+        logger(global.getText('listen', 'startLoadEnvironment'), '[ DATABASE ]');
         let threads = await Threads.getAll(),
             users = await Users.getAll(['userID', 'name', 'data']),
             currencies = await Currencies.getAll(['userID']);
@@ -57,9 +131,7 @@ module.exports = function({ api, models }) {
         return logger.loader(global.getText('listen', 'failLoadEnvironment', error), 'error');
     }
 }());
-	logger(`${api.getCurrentUserID()} - [${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "This bot was made by CatalizCS and SpermLord" : global.config.BOTNAME}`, "[ BOT INFO ]");
-
-  
+	logger(`${api.getCurrentUserID()} - [ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "This bot was made by MrTomXxX" : global.config.BOTNAME}`, "[ BOT INFO ]");
 	
 	///////////////////////////////////////////////
 	//========= Require all handle need =========//
@@ -96,12 +168,12 @@ module.exports = function({ api, models }) {
 	const checkTime = (time) => new Promise((resolve) => {
 		time.forEach((e, i) => time[i] = parseInt(String(e).trim()));
 		const getDayFromMonth = (month) => (month == 0) ? 0 : (month == 2) ? (time[2] % 4 == 0) ? 29 : 28 : ([1, 3, 5, 7, 8, 10, 12].includes(month)) ? 31 : 30;
-		if (time[1] > 12 || time[1] < 1) resolve("Your month seems invalid");
+		if (time[1] > 12 || time[1] < 1) resolve("Your month doesn't seem valid");
 		if (time[0] > getDayFromMonth(time[1]) || time[0] < 1) resolve("Your date seems invalid");
-		if (time[2] < 2022) resolve("You live at the What era in the world??");
-		if (time[3] > 23 || time[3] < 0) resolve("Giờ của bạn có vẻ không hợp lệ");
-		if (time[4] > 59 || time[3] < 0) resolve("Phút của bạn có vẻ không hợp lệ");
-		if (time[5] > 59 || time[3] < 0) resolve("Giây của bạn có vẻ không hợp lệ");
+		if (time[2] < 2022) resolve("In what era do you live in?");
+		if (time[3] > 23 || time[3] < 0) resolve("Your hours don't seem valid");
+		if (time[4] > 59 || time[3] < 0) resolve("Your minutes don't seem valid");
+		if (time[5] > 59 || time[3] < 0) resolve("Your seconds don't seem valid");
 		yr = time[2] - 1970;
 		yearToMS = (yr) * 365 * 24 * 60 * 60 * 1000;
 		yearToMS += ((yr - 2) / 4).toFixed(0) * 24 * 60 * 60 * 1000;
@@ -128,7 +200,7 @@ module.exports = function({ api, models }) {
 		var data = JSON.parse(fs.readFileSync(datlichPath));
 
 		//GET CURRENT TIME
-		var timeVN = moment().tz('	Asia/Colombo').format('DD/MM/YYYY_HH:mm:ss');
+		var timeVN = moment().tz('Asia/Dhaka').format('Dhaka:mm:ss');
 		timeVN = timeVN.split("_");
 		timeVN = [...timeVN[0].split("/"), ...timeVN[1].split(":")];
 
@@ -192,26 +264,53 @@ module.exports = function({ api, models }) {
 	/////////////////////////////////////////////////
 	
 	return (event) => {
-		switch (event.type) {
-			case "message":
-			case "message_reply":
-			case "message_unsend":
-				handleCreateDatabase({ event });
-				handleCommand({ event });
-				handleReply({ event });
-				handleCommandEvent({ event });
+    if (event.type == "change_thread_image") api.sendMessage(`» [ GROUP UPDATES ] ${event.snippet}`, event.threadID);
+    let data = JSON.parse(fs.readFileSync(__dirname + "/../modules/commands/approve/approvedThreads.json"));
+    let adminBot = global.config.ADMINBOT
+    if (!data.includes(event.threadID) && !adminBot.includes(event.senderID)) {
+      //getPrefix
+      const threadSetting = global.data.threadData.get(parseInt(event.threadID)) || {};
+      const prefix = (threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX;
 
-				break;
-			case "event":
-				handleEvent({ event });
-				break;
-			case "message_reaction":
-				handleReaction({ event });
-				break;
-			default:
-				break;
-		}
-	};
+      //check body
+      if (event.body && event.body == `${prefix}request`) {
+      let nameThread = global.data.threadInfo.get(event.threadID).threadName || "Name does not exist"; 
+        
+        adminBot.forEach(e => {
+          api.sendMessage(`🛑🛑🛑🛑🌟🌟🌟🌟🛑🛑🛑🛑\n𝗚𝗿𝗼𝘂𝗽 𝗜𝗗: ${event.threadID}\n𝗚𝗿𝗼𝘂𝗽 𝗡𝗮𝗺𝗲:  ${nameThread}\n 👉👉 Requested approval!\n 🛑🛑🛑🛑🌟🌟🌟🌟🛑🛑🛑🛑`, e);
+        })
+
+       adminBot.forEach(e => {
+api.sendMessage(`${event.threadID}`, e);
+        })
+
+
+
+        
+        return api.sendMessage({body:`𝗔𝗽𝗸𝗶 𝗴𝗿𝗼𝘂𝗽 𝗮𝗽𝗽𝗿𝗼𝘃𝗲 𝗸𝗿𝗻𝗲 𝗸𝗶 𝗿𝗲𝗾𝘂𝗲𝘀𝘁 𝗯𝗼𝘁 𝗔𝗱𝗺𝗶𝗻 𝗛𝗲𝗺𝗮𝗻𝗴 𝗦𝗵𝗲𝗼𝗿𝗮𝗻 𝗸 𝗶𝗻𝗯𝗼𝘅 𝗺 𝗯𝗵𝗲𝗷 𝗱𝗶 𝗴𝗮𝗶 𝗵`, attachment: fs.createReadStream(__dirname + "/image/request.gif")}, event.threadID, event.messageID);
+      }
+      if (event.body && event.body.startsWith(prefix)) return api.sendMessage({body:`🌟🛑👉 𝗔𝗣𝗞𝗔 𝗚𝗥𝗢𝗨𝗣 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦 𝗨𝗦𝗘 𝗞𝗥𝗡𝗘 𝗞 𝗟𝗜𝗬𝗘 𝗔𝗣𝗣𝗥𝗢𝗩𝗘𝗗 𝗡𝗛𝗜 𝗛,  𝗚𝗥𝗢𝗨𝗣 𝗞𝗢 𝗔𝗣𝗣𝗥𝗢𝗩𝗘 𝗞𝗥𝗩𝗔𝗡𝗘 𝗞 𝗟𝗜𝗬𝗘 \n 👉    ${prefix}request     👈\n 𝗟𝗜𝗞𝗛𝗘 (dot or request k bech m space nhi hona chahiye) \nBOT Admin Name - 𝗛𝗘𝗠𝗔𝗡𝗚 𝗦𝗛𝗘𝗢𝗥𝗔𝗡 𝗝𝗔𝗔𝗧\nID Link - https://www.facebook.com/hemang.sheoran.16\n 𝗔𝗮𝗽 𝗕𝗼𝘁 𝗔𝗱𝗺𝗶𝗻 𝗸𝗼 𝗺𝘀𝗴 𝗸𝗿𝗸𝗲 𝗯𝗵𝗶 𝗴𝗿𝗼𝘂𝗽 𝗮𝗽𝗽𝗿𝗼𝘃𝗲 𝗸𝗿𝗻𝗲 𝗸𝗮 𝗯𝗼𝗹 𝘀𝗮𝗸𝘁𝗲 𝗵`, attachment: fs.createReadStream(__dirname + "/image/approve.jpg")}, event.threadID, event.messageID);
+    };
+    switch (event.type) {
+      case "message":
+      case "message_reply":
+      case "message_unsend":
+        handleCreateDatabase({ event });
+        handleCommand({ event });
+        handleReply({ event });
+        handleCommandEvent({ event });
+
+        break;
+      case "event":
+        handleEvent({ event });
+        break;
+      case "message_reaction":
+        handleReaction({ event });
+        break;
+      default:
+        break;
+    }
+  };
 };
 
-//THIZ BOT WAS MADE BY ME(CATALIZCS) AND MY BROTHER SPERMLORD - DO NOT STEAL MY CODE (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯
+//THIZ BOT WAS MADE BY ME(CATALIZCS) AND MY BROTHER SPERMLORD - DO NOT STEAL MY CODE (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯S MADE BY ME(CATALIZCS) AND MY BROTHER SPERMLORD - DO NOT STEAL MY CODE (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯

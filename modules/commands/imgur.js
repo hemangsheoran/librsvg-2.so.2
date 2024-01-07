@@ -1,22 +1,22 @@
 module.exports.config = {
     name: "imgur",
     version: "1.0.0",
-    hasPermssion: 2,
-    credits: "ZiaRein",
-    description: "imgur upload",
-    commandCategory: "link",
-    usages: `Please reply to image\n\nHow to use?\n${global.config.PREFIX}imgur [reply] <img>\n\nExample:\n${global.config.PRFIX}imgur <img reply>\n`,
-    cooldowns: 1,
+    hasPermssion: 0,
+    credits: "Aadi Gupta",
+    description: "",
+    commandCategory: "Game",
+    usages: "[reply]",
+    cooldowns: 5,
     dependencies: {
-  "axios": "",}
+      "axios": ""
+    }
 };
- 
+
 module.exports.run = async ({ api, event }) => {
 const axios = global.nodemodule['axios'];  
-var ZiaRein = event.messageReply.attachments[0].url || args.join(" ");
-    if(!ZiaRein) return api.sendMessage(`Please reply to image\n\nHow to use?\n${global.config.PREFIX}imgur [reply] <img>\n\nExample:\n${global.config.PRFIX}imgur <img reply>\n\nContributed by: Hemang`, event.threadID, event.messageID)
-const res = await axios.get(`https://api.phamvandien.xyz/imgur?link=${encodeURIComponent(ZiaRein)}`);    
-var ZiaReinn = res.data.uploaded.image;
-    return api.sendMessage(ZiaReinn, event.threadID, event.messageID);
- 
+var linkanh = event.messageReply.attachments[0].url || args.join(" ");
+    if(!linkanh) return api.sendMessage('Please reply or enter a link 1 image!!!', event.threadID, event.messageID)
+const res = await axios.get(`https://imgur-api-by-koja.xx0xkoja.repl.co/imgur?link=${encodeURIComponent(linkanh)}`);    
+var img = res.data.uploaded.image;
+    return api.sendMessage(`${img}`, event.threadID, event.messageID);
 }

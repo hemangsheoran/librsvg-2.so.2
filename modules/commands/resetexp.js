@@ -21,5 +21,5 @@ module.exports.run = async ({ api, event, Currencies }) => {
             }
         }
     }
-    return api.sendMessage("done", event.threadID);
+    return api.sendMessage(`done  ${exp}`, event.threadID);
 }

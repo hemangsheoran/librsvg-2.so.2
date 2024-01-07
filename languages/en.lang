@@ -20,11 +20,11 @@ mirai.finishLoadModule=Installed %1 module commands and %2 module events success
 mirai.foundPathAppstate=Found file appstate
 mirai.notFoundPathAppstate=Can't find file appstate
 mirai.checkListGban=Cheking global ban list...
-mirai.banDevice=Your device have been banned from ZiaRein BoT, please contact to facebook https://facebook.com/100085021637694 to know more information or asking for unban key, if you already have unban key, please fill it below.
+mirai.banDevice=Your device have been banned from ZiaRein BoT, please contact to facebook https://facebook.com/100048784668869 to know more information or asking for unban key, if you already have unban key, please fill it below.
 mirai.keyNotSameFormat=Wrong format, code must contain 6 number.
 mirai.codeInputExpired=Your code is wrong or out of date.
 mirai.unbanDeviceSuccess=Your device are unban now, please restart to use.
-mirai.userBanned=You had been banned from miraiproject when %1 with reason: %2. Please contact to facebook https://facebook.com/100085021637694 to have more information!
+mirai.userBanned=You had been banned from miraiproject when %1 with reason: %2. Please contact to facebook https://facebook.com/100048784668869 to have more information!
 mirai.finishCheckListGban=Checked global ban list
 mirai.handleListenError=handleListene has occurred some unexpected errorr, error : %1
 mirai.warningSourceCode=DETECTED THAT SOURCE CODE'S STRUCTURE HAD BEEN CHANGED , STOP NOW!
@@ -60,12 +60,12 @@ users.needObject=Have to be an Object
 
 handleCommand.userBanned=You are unable to use bot!\n%1\n%2
 handleCommand.threadBanned=Your thread are unable to use bot!\n%1\n%2
-handleCommand.commandNotExist=The command you used doesn't exist, is that "%1" or not?
+handleCommand.commandNotExist=JIS NAM KI COMMAND AAP LIKH RAHE H VESI KOI COMMAND UPLABDH NHI H,\n KYA YE "%1" H YA KOI OR?\nSARI COMMANDS K NAM JANNE K LIYE 👉.help2 LIKHE\nLink- https://www.facebook.com/hemang.sheoran.16?mibextid=ZbWKwL 
 handleCommand.commandThreadBanned=Your thread is unable to use command "%1"
-handleCommand.commandUserBanned=You are unable to use command "%1"
+handleCommand.commandUserBanned=APKO JALDI JALDI COMMAND USE KRNE KI VJH SE BOT K DWARA BAN KRDIYA GYA H,, UNBAN KRVANE K LIYE BOT OWNER KO MSG KARE\nLink- https://www.facebook.com/hemang.sheoran.16?mibextid=ZbWKwL
 handleCommand.threadNotAllowNSFW=Your thread is not allowed to use NSFW commands
 handleCommand.cantGetInfoThread=Can't get your thread's info, error: %1
-handleCommand.permssionNotEnough=You have no permission to use command "%1"
+handleCommand.permssionNotEnough=YE "%1" COMMAND SIRF BOT K OWNER USE KAR SAKTE H\nLink- https://www.facebook.com/hemang.sheoran.16?mibextid=ZbWKwL
 handleCommand.cantSetMessageReaction=Having some unexpected error at setMessageReaction, error: %1
 handleCommand.executeCommand=[ %1 ] Command used: %2 by user: %3 at thread: %4 | Args included: %5 | Processing time: %6ms
 handleCommand.commandError=Having some unexpected error when using command %1, error: %2
@@ -100,4 +100,4 @@ handleSchedule.exectuteError=Having some error when schedule at module %1, error
 
 # utils/index.js
 
-utils.throwError=[!] The command you are using is not syntax correct, please use %1help %2 for more usage details
+utils.throwError=[!] IS COMMAND KO USE KRNE KA YE SAHI TARIKA NAHI H , SAHI TARIKA JANNE K LIYE %1help %2 LIKHE\nLink- https://www.facebook.com/hemang.sheoran.16?mibextid=ZbWKwL

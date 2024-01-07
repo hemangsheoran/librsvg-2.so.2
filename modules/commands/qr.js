@@ -3,8 +3,8 @@ module.exports.config = {
 	version: "1.0.1",
 	hasPermssion: 0,
 	credits: "Mirai Team",
-	description: "Encrypt text with QR code",
-	commandCategory: "Tool",
+	description: "",
+	commandCategory: "other",
 	usages: "[text]",
 	cooldowns: 5,
 	dependencies: {

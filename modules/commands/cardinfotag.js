@@ -16,10 +16,10 @@ module.exports.config = {
   usages: "",
   cooldowns: 5,
   dependencies: {
-    canvas: "",
-    axios: "",
-    "fs-extra": "",
-  },
+    "canvas": "",
+    "axios": "",
+    "fs-extra": ""
+  }
 };
 
 module.exports.circle = async (image) => {

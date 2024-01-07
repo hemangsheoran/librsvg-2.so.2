@@ -25,7 +25,7 @@ module.exports.handleReaction = async ({ api, event, Users, handleReaction }) =>
 	var value = await api.getThreadInfo(event.threadID);
 	if (!(value.nicknames)[event.userID]) value = (await Users.getInfo(event.userID)).name;
 	else value = (value.nicknames)[event.userID];
-	return api.sendMessage(`${value} Đã tham gia thành công giveaway có ID: #${handleReaction.ID}`, event.userID);
+	return api.sendMessage(`${value} Successfully participated in giveaway yes ID: #${handleReaction.ID}`, event.userID);
 }
 
 module.exports.run = async ({ api, event, args, Users }) => {
@@ -79,7 +79,7 @@ module.exports.run = async ({ api, event, args, Users }) => {
 	}
 	else if (args[0] == "join") {
 		let ID = args[1].replace("#", "");
-		if (!ID) return api.sendMessage("Bạn phải nhập ID GiveAway để có thể tham gia giveaway!", event.threadID, event.messageID);
+		if (!ID) return api.sendMessage("You must enter your GiveAway ID to participate in the giveaway!", event.threadID, event.messageID);
 		let data = global.data.GiveAway.get(ID);
 		if (!data) return api.sendMessage("ID GiveAway bạn nhập không tồn tại!", event.threadID, event.messageID);
 		if (data.joined.includes(event.senderID)) return api.sendMessage("Bạn đã tham gia giveaway này", event.threadID);

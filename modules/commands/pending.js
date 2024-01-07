@@ -22,7 +22,7 @@ module.exports.languages = {
     "en": {
         "invaildNumber": "%1 is not an invalid number",
         "cancelSuccess": "Refused %1 thread!",
-        "notiBox": "Akiri BoT Connected Successfully!\nUse +help for more info :>",
+        "notiBox": "𝗟𝗔𝗙𝗔𝗡𝗚𝗔 𝗕𝗢𝗧 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗘𝗗 𝗔𝗚𝗔𝗜𝗡 ✅✅✅\n GROUP KO BOT ID KI MESSAGE REQUEST SE BOT OWNER K DWARA NIKAL DIYA GYA H,\n🛑 YOUR GROUP MAY BE BANNED IF YOU AGAIN REMOVE BOT 🛑 \n 𝑬𝑵𝑱𝑶𝒀 𝑬𝑽𝑬𝑹𝒀𝑶𝑵𝑬\n𝑩𝑶𝑻 𝑶𝑾𝑵𝑬𝑹 - 𝗛𝗘𝗠𝗔𝗡𝗚 𝗦𝗛𝗘𝗢𝗥𝗔𝗡 𝗝𝗔𝗔𝗧\n𝑶𝑾𝑵𝑬𝑹 𝑰𝑫 -https://www.facebook.com/hemang.sheoran.16?mibextid=ZbWKwL \n 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟",
         "approveSuccess": "Approved successfully %1 threads!",
 
         "cantGetPendingList": "Can't get the pending list!",
@@ -32,6 +32,7 @@ module.exports.languages = {
 }
 
 module.exports.handleReply = async function({ api, event, handleReply, getText }) {
+  const fs = require("fs");
     if (String(event.senderID) !== String(handleReply.author)) return;
     const { body, threadID, messageID } = event;
     var count = 0;
@@ -52,7 +53,14 @@ module.exports.handleReply = async function({ api, event, handleReply, getText }
             if (isNaN(singleIndex) || singleIndex <= 0 || singleIndex > handleReply.pending.length) return api.sendMessage(getText("invaildNumber", singleIndex), threadID, messageID);
             api.sendMessage(getText("notiBox"), handleReply.pending[singleIndex - 1].threadID);
             count+=1;
-        }
+        
+ const jsonData = fs.readFileSync(__dirname + "/../commands/approve/approvedThreads.json", 'utf-8');
+                     
+                                         const data = JSON.parse(jsonData);                                        
+  const idToRemove = handleReply.pending[singleIndex - 1].threadID;     
+  data.push(idToRemove);                               
+    const updatedJsonData = JSON.stringify(data, null, 2);                  
+  fs.writeFileSync(__dirname + "/../commands/approve/approvedThreads.json", updatedJsonData, 'utf-8');                              }          
         return api.sendMessage(getText("approveSuccess", count), threadID, messageID);
     }
 }

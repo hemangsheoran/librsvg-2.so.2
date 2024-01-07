@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 3,
     credits: "???",//Mod by H.Thanh
     description: "",
-    commandCategory: "Hệ thống",
+    commandCategory: "System",
     usages: "",
     cooldowns: 0
 };

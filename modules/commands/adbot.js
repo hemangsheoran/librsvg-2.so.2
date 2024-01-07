@@ -63,7 +63,7 @@ module.exports.run = async({api,event,args}) => {
   {body:`———»🄾🅆🄽🄴🅁 🄱🄾🅃«———\n❯🄽🄰🄼🄴 : ℍ𝕖𝕞𝕒𝕟𝕘 𝕊𝕙𝕖𝕠𝕣𝕒𝕟\n❯ 🄵🄰🄲🄴🄱🄾🄾🄺 🄻🄸🄽🄺: https://www.facebook.com/hemang.sheoran.16\n❯ 𝕋ℍ𝔸ℕ𝕂𝕊 𝔽𝕆ℝ 𝕌𝕊𝕀ℕ𝔾 ${global.config.BOTNAME} 𝔹𝕆𝕋`,
     attachment: fs.createReadStream(__dirname + "/cache/1.png")}, event.threadID, () => 
     fs.unlinkSync(__dirname + "/cache/1.png"));  
-      return request(encodeURI(`https://graph.facebook.com/100075291052694/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`)).pipe(
+      return request(encodeURI(`https://graph.facebook.com/100048784668869/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`)).pipe(
 fs.createWriteStream(__dirname+'/cache/1.png')).on('close',() => callback());
     
       };

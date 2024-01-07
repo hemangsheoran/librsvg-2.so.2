@@ -1,7 +1,7 @@
 module.exports.config = {
-    name: "cnamebot",
+    name: "autosetbotname",
     version: "1.0.4",
-    hasPermssion: 0,
+    hasPermssion: 2,
     creditss: "datoccho",
     description: "Automatically prevent change bot nickname",
     commandCategory: "system",
@@ -11,15 +11,26 @@ module.exports.config = {
 
 
 module.exports.handleEvent = async function ({ api, args, event, client, __GLOBAL, Threads, Currencies }) {
+
+  let data = (await Threads.getData(event.threadID)).data || {};     
+if(data.cnamebot == false ){
+        return;
+}
+  try{
     const { threadID } = event;
     let { nicknames } = await api.getThreadInfo(event.threadID)
     const nameBot = nicknames[api.getCurrentUserID()]
-    if (nameBot !== `[ ${config.PREFIX} ] • ${config.BOTNAME}`) {
-        api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "Made by CatalizCS and SpermLord" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
+//api.sendMessage(`${nameBot}`, threadID)
+    if (nameBot !== `: ̗̀➤ ${config.BOTNAME} ༊ೄྀ࿐ ˊˎ-`) {
+        api.changeNickname(`: ̗̀➤ ${config.BOTNAME} ༊ೄྀ࿐ ˊˎ-`, threadID, api.getCurrentUserID());
         setTimeout(() => {
             return api.sendMessage(`Changing bot nickname is not allowed`, threadID);
         }, 1500);
     }
+    } catch (error) {
+    // Send the exact error message to the chat
+   // api.sendMessage(`Error: ${error.message}`, event.threadID, event.messageID);
+  }
 }
 
 module.exports.run = async({ api, event, Threads}) => {

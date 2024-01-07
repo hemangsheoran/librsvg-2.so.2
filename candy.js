@@ -379,9 +379,9 @@ loginApiData.setOptions(global.config.FCAOption)
         };
         if (!global.checkBan) logger(global.getText('mirai', 'warningSourceCode'), '[ GLOBAL BAN ]');
         global.client.api = loginApiData
-        logger(`CaNDY`, '[ CaNDY (LaFhanGa) ]');
-        logger('Hey, thank you for using this Bot', '[ CaNDY (LaFhanGa) ]');
-        logger("Fixed by Hemang", '[ CaNDY (LaFhanGa) ]');
+        logger(`HEMANG`, '[ HEMANG (LaFhanGa) ]');
+        logger('Hey, thank you for using this Bot', '[ HEMANG (LaFhanGa) ]');
+        logger("Fixed by Hemang", '[ HEMANG (LaFhanGa) ]');
       //notif if bot is kaka on palang
 const momentt = require("moment-timezone").tz("Asia/Kolkata");
     const day = momentt.day();
@@ -391,7 +391,7 @@ loginApiData.sendMessage(``)
 cron.schedule('0 0 0 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Good morning everyone, have a nice day", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("🌄 𝑺𝑼𝑩𝑯 𝑺𝑼𝑩𝑨𝑯 𝑺𝑨𝑩𝑯𝑰 𝑮𝑹𝑶𝑼𝑷𝑾𝑨𝑺𝑰𝑶 𝑲𝑶 , 𝑱𝑨𝑮𝑶 𝑲𝑬𝑺𝑬 𝑺𝑼𝑺𝑻 𝑷𝑨𝑫𝑬 𝑯𝑶, 𝑱𝑨𝑰 𝑺𝑯𝑹𝑬𝑬 𝑲𝑹𝑰𝑺𝑯𝑵𝑨 🌺🌷💚🚩", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -409,7 +409,7 @@ cron.schedule('0 0 1 * * *', () => {
 cron.schedule('0 0 5 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Good morning everyone, have a nice day", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("𝑱𝑨𝑮𝑶 𝑹𝑬 𝑱𝑨𝑮𝑶 𝑹𝑬 𝑨𝑨𝑳𝑺𝑰𝑶", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -418,7 +418,7 @@ cron.schedule('0 0 5 * * *', () => {
 cron.schedule('0 0 6 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Good morning everyone, have a nice day", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("🌄 𝑺𝑼𝑩𝑯 𝑺𝑼𝑩𝑨𝑯 𝑺𝑨𝑩𝑯𝑰 𝑮𝑹𝑶𝑼𝑷𝑾𝑨𝑺𝑰𝑶 𝑲𝑶 , 𝑱𝑨𝑮𝑶 𝑲𝑬𝑺𝑬 𝑺𝑼𝑺𝑻 𝑷𝑨𝑫𝑬 𝑯𝑶, 𝑱𝑨𝑰 𝑺𝑯𝑹𝑬𝑬 𝑲𝑹𝑰𝑺𝑯𝑵𝑨 🌺🌷💚🚩", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -427,7 +427,7 @@ cron.schedule('0 0 6 * * *', () => {
 cron.schedule('0 12 7 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("Good morning everyone, have a nice day", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("🌄 𝑺𝑼𝑩𝑯 𝑺𝑼𝑩𝑨𝑯 𝑺𝑨𝑩𝑯𝑰 𝑮𝑹𝑶𝑼𝑷𝑾𝑨𝑺𝑰𝑶 𝑲𝑶 , 𝑱𝑨𝑮𝑶 𝑲𝑬𝑺𝑬 𝑺𝑼𝑺𝑻 𝑷𝑨𝑫𝑬 𝑯𝑶, 𝑱𝑨𝑰 𝑺𝑯𝑹𝑬𝑬 𝑲𝑹𝑰𝑺𝑯𝑵𝑨 🌺🌷💚🚩", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -445,7 +445,7 @@ cron.schedule('0 0 7 * * *', () => {
 cron.schedule('0 30 12 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("OR BTAO SAB KYA HAL CHAL H KHANA KHA LIYA SABNE YA KAM M LGE HUYE HO", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("𝑱𝑨𝑮𝑶 𝑮𝑹𝑶𝑼𝑷𝑾𝑨𝑺𝑰𝑶 𝑱𝑨𝑮𝑶 𝑲𝑬𝑺𝑬 𝑺𝑼𝑺𝑻 𝑺𝑬 𝑷𝑨𝑫𝑬 𝑯𝑶", now.threadID) : '');
   });
 }, {
   scheduled: true,
@@ -454,7 +454,7 @@ cron.schedule('0 30 12 * * *', () => {
 cron.schedule('0 0 12 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
     if (err) return console.log("ERR: "+err);
-    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("OR BTAO SAB KYA HAL CHAL H KHANA KHA LIYA SABNE YA KAM M LGE HUYE HO", now.threadID) : '');
+    list.forEach(now => (now.isGroup == true && now.threadID != list.threadID) ? loginApiData.sendMessage("𝑱𝑨𝑮𝑶 𝑮𝑹𝑶𝑼𝑷𝑾𝑨𝑺𝑰𝑶 𝑱𝑨𝑮𝑶 𝑲𝑬𝑺𝑬 𝑺𝑼𝑺𝑻 𝑺𝑬 𝑷𝑨𝑫𝑬 𝑯𝑶", now.threadID) : '');
   });
 }, {
   scheduled: true,

@@ -1,7 +1,7 @@
 module.exports.config = {
 	name: "resend",
 	version: "2.0.0",
-	hasPermssion: 1,
+	hasPermssion: 2,
 	credits: "Thọ & Mod By DuyVuong",
 	description: "Là resend thôi",
 	commandCategory: "general", 
@@ -71,5 +71,5 @@ module.exports.run = async function({ api, event, Threads }) {
 	await Threads.setData(parseInt(threadID), { data });
 	global.data.threadData.set(parseInt(threadID), data);
 	
-	return api.sendMessage(`is already ${(data["resend"] == true) ? "turn on" : "Turn off"} successfully!`, threadID, messageID);
+	return api.sendMessage(`is already ${(data["resend"] == true) ? "turn on ✅" : "Turn off ❌"} successfully!`, threadID, messageID);
     }

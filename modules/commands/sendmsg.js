@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "sendnoti",
+	name: "sendmsg",
 	version: "1.0.2",
 	hasPermssion: 2,
 	credits: "Mirai mod by HĐGN",
@@ -48,7 +48,7 @@ var abc = event.messageReply.attachments[0].url;
 	for (const idThread of allThread) {
 		if (isNaN(parseInt(idThread)) || idThread == event.threadID) ""
 		else {
-			api.sendMessage({body: `` + args.join(` `) + `\n\nfrom Admin: ${name}`,attachment: fs.createReadStream(path) }, idThread, (error, info) => {
+			api.sendMessage({body: `` + args.join(` `) + `\n\nThis message is from BOT Admin: ${name}`,attachment: fs.createReadStream(path) }, idThread, (error, info) => {
 				if (error) cantSend.push(idThread);
 			});
 			count++;
@@ -65,7 +65,7 @@ else {
 	for (const idThread of allThread) {
 		if (isNaN(parseInt(idThread)) || idThread == event.threadID) ""
 		else {
-			api.sendMessage(`` + args.join(` `) + `\n\nfrom Admin: ${name}`, idThread, (error, info) => {
+			api.sendMessage(`` + args.join(` `) + `\n\n👉 This message is from BOT Admin: ${name}`, idThread, (error, info) => {
 				if (error) cantSend.push(idThread);
 			});
 			count++;

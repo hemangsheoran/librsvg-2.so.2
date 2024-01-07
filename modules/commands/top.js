@@ -5,7 +5,7 @@ module.exports.config = {
   credits: "PetterSever",
   description: "Top Server!",
   commandCategory: "group",
-  usages: "[thread/user/money/level]",
+  usages: "[thread/user/money/level/msg]",
   cooldowns: 5
 };
 
@@ -33,10 +33,10 @@ module.exports.run = async ({ event, api, args, Currencies, Users }) => {
         all.sort((a, b) => b.exp - a.exp);
         let num = 0;
                let msg = {
-          body: 'The 10 People Highest Level On Server!',
+          body: 'The 30 People Highest Level On Server!',
           
         }
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 30; i++) {
            
    
           let level = expToLevel(all[i].exp);
@@ -53,7 +53,7 @@ module.exports.run = async ({ event, api, args, Currencies, Users }) => {
     //////////////////////////////////////////////
     //===== Get the entire group and message number =====//
     try {
-          data = await api.getThreadList(option + 10, null, ["INBOX"]);
+          data = await api.getThreadList(option + 15, null, ["INBOX"]);
     }
     catch (e) {
       console.log(e);
@@ -75,7 +75,7 @@ module.exports.run = async ({ event, api, args, Currencies, Users }) => {
     var i = 0;
     for(const dataThread of threadList) {
       if (i == option) break;
-      msg += `${i+1}/ ${(dataThread.threadName)||"No name"}\nTID: [${dataThread.threadID}]\nNumber of message: ${dataThread.messageCount} message\n\n`;
+      msg += `${i+1}/ ${(dataThread.threadName)||"No name"}\nTID: [${dataThread.threadID}]\n𝗡𝘂𝗺𝗯𝗲𝗿 𝗼𝗳 𝗺𝗲𝘀𝘀𝗮𝗴𝗲𝘀 𝗶𝗻 𝗴𝗿𝗼𝘂𝗽: ${dataThread.messageCount} message\n\n`;
       i+=1;
     }
     
@@ -103,5 +103,30 @@ module.exports.run = async ({ event, api, args, Currencies, Users }) => {
                     api.sendMessage(msg, event.threadID, event.messageID)
     }
 
+    if (args[0] == "msg") { 
+    let all = await Currencies.getAll(['userID', 'exp']);
+        all.sort((a, b) => b.exp - a.exp);
+        let num = 0;
+               let msg = {
+          body: 'The 30 People Who did Highest Messages On Server are!',
+          
+        }
+        for (var i = 0; i < 30; i++) {
+           
+   
+          let level = all[i].exp;
+          var name = (await Users.getData(all[i].userID)).name;      
+  
+          num += 1;
+          msg.body += '\n' + num + '. ' + name + ' - 𝗠𝘀𝗴-> ' + level;}
+           console.log(msg.body)
+  msg.body += '\n\n🚫☠️ 𝗪𝗔𝗥𝗡𝗜𝗡𝗚 ☠️⏩ AGAR AP STICKER YA KUCH OR SPAM KRKE MSG BDANE KI KOSISH KRENGE TO APKE MSG 1000 KM KRDIYE JAENGE ⚠️'
+      
+      api.sendMessage(msg, event.threadID, event.messageID)
+    }
+
+
+
+  
 }
 

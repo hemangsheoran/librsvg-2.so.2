@@ -1,10 +1,10 @@
 module.exports.config = {
-	name: "toilet",
+	name: "toilet1",
 	version: "1.0.1",
-	hasPermssion: 0,
+	hasPermission: 0,
 	credits: "NTKhang",
 	description: "Toilet 🚽",
-	commandCategory: "hình ảnh",
+	commandCategory: "image image",
 	usages: "rank",
 	cooldowns: 5,
 	dependencies: {

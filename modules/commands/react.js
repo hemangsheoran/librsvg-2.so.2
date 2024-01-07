@@ -1,23 +1,84 @@
-const fs = require("fs");
 module.exports.config = {
-	name: "autoreactv2",
-    version: "1.0.1",
-	hasPermssion: 0,
-	credits: "John Lester", 
-	description: "No Prefix",
-	commandCategory: "no prefix",
-    cooldowns: 5, 
+    name: "react",
+    version: "1.0.4",
+    hasPermssion: 2,
+    creditss: "datoccho",
+    description: "Automatically prevent change bot nickname",
+    commandCategory: "system",
+    usages: "",
+    cooldowns: 5
 };
 
-module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
+
+module.exports.handleEvent = async function ({ api, args, event, client, __GLOBAL, Threads, Currencies }) {
+let data = (await Threads.getData(event.threadID)).data || {};     
+if( data.react == false ){
+        return;
+      }
+      
+
 	var { threadID, messageID } = event;
 	let react = event.body.toLowerCase()
-	if (event.body.indexOf("A")==0 || event.body.indexOf("d")==0 || event.body.indexOf("C")==0 || event.body.indexOf("D")==0 || event.body.indexOf("E")==0 || event.body.indexOf("F")==0 || event.body.indexOf("G")==0 || event.body.indexOf("H")==0 || event.body.indexOf("I")==0 || event.body.indexOf("J")==0 || event.body.indexOf("K")==0 || event.body.indexOf("L")==0 || event.body.indexOf("M")==0 || event.body.indexOf("N")==0 || event.body.indexOf("O")==0 || event.body.indexOf("P")==0 || event.body.indexOf("Q")==0 || event.body.indexOf("R")==0 || event.body.indexOf("S")==0 || event.body.indexOf("T")==0 || event.body.indexOf("U")==0 || event.body.indexOf("V")==0 || event.body.indexOf("w")==0 || event.body.indexOf("W")==0 || event.body.indexOf("X")==0 || event.body.indexOf("Y")==0 || event.body.indexOf("h")==0 || event.body.indexOf("Z")==0 || event.body.indexOf("c")==0 || event.body.indexOf("a")==0 || event.body.indexOf("e")==0 || event.body.indexOf("😋")==0 || event.body.indexOf("🤩")==0 || event.body.indexOf("🙄")==0 || event.body.indexOf("🤓")==0 || event.body.indexOf("☕")==0 || event.body.indexOf("🤗")==0 || event.body.indexOf("🤭")==0 || event.body.indexOf("😶")==0 ||event.body.indexOf("🥵")==0 || event.body.indexOf("😎")==0 || event.body.indexOf("🤡")==0 || event.body.indexOf("😇")==0 || event.body.indexOf("😊")==0 || event.body.indexOf("g")==0 || event.body.indexOf("🥀")==0 || event.body.indexOf("🥳")==0 || event.body.indexOf("🤔")==0 || event.body.indexOf("r")==0 || event.body.indexOf("💖")==0 || event.body.indexOf("s")==0 || event.body.indexOf("m")==0 || event.body.indexOf("🙉")==0 || event.body.indexOf("💯")==0 || event.body.indexOf("🙈")==0 || event.body.indexOf("😏")==0 || event.body.indexOf("🥰")==0 || event.body.indexOf("😻")==0 || event.body.indexOf("❤")==0 && !bot.includes(event.senderID))  {
+	
+  const ytdl = global.nodemodule["ytdl-core"];
+	const { createReadStream, createWriteStream, unlinkSync, statSync } = global.nodemodule["fs-extra"];
+  
+  
+if (event.senderID == 100063142031840 )  {
 		var msg = {
 				body: ""
 			}
 			api.sendMessage(msg, threadID, messageID);
-    api.setMessageReaction("💛", event.messageID, (err) => {}, true)
+    api.setMessageReaction("😘", event.messageID, (err) => {}, true)
+	return	};
+  
+
+  
+
+if (event.senderID == 100052886831202 )  {
+		var msg = {
+				body: ""
+			}
+			api.sendMessage(msg, threadID, messageID);
+    api.setMessageReaction("💖", event.messageID, (err) => {}, true)
+	return	};
+  
+
+
+
+
+  
+  
+  if (event.senderID == 100048784668869 )  {
+		var msg = {
+				body: ""
+			}
+			api.sendMessage(msg, threadID, messageID);
+    api.setMessageReaction("👑", event.messageID, (err) => {}, true)
+	return	};
+  
+  
+  
+  
+  if (event.body.indexOf(".sim ")==0||
+ event.body.indexOf("#sim ")==0 || event.body.indexOf(".sim")==0 && !bot.includes(event.senderID))  {
+		var msg = {
+				body: ".sim ki jgh .hs likho tb reply dunga"
+			}
+			api.sendMessage(msg, threadID, messageID);
+    api.setMessageReaction("😡", event.messageID, (err) => {}, true)
+	return	};
+  
+  
+  
+  
+  
+  if (event.body.indexOf("A")==0 || event.body.indexOf("d")==0 || event.body.indexOf("C")==0 || event.body.indexOf("D")==0 || event.body.indexOf("E")==0 || event.body.indexOf("F")==0 || event.body.indexOf("G")==0 || event.body.indexOf("H")==0 || event.body.indexOf("I")==0 || event.body.indexOf("J")==0 || event.body.indexOf("K")==0 || event.body.indexOf("L")==0 || event.body.indexOf("M")==0 || event.body.indexOf("N")==0 || event.body.indexOf("O")==0 || event.body.indexOf("P")==0 || event.body.indexOf("Q")==0 || event.body.indexOf("R")==0 || event.body.indexOf("S")==0 || event.body.indexOf("T")==0 || event.body.indexOf("U")==0 || event.body.indexOf("V")==0 || event.body.indexOf("w")==0 || event.body.indexOf("W")==0 || event.body.indexOf("X")==0 || event.body.indexOf("Y")==0 || event.body.indexOf("h")==0 || event.body.indexOf("Z")==0 || event.body.indexOf("c")==0 || event.body.indexOf("a")==0 || event.body.indexOf("e")==0 || event.body.indexOf("😋")==0 || event.body.indexOf("🤩")==0 || event.body.indexOf("🙄")==0 || event.body.indexOf("🤓")==0 || event.body.indexOf("☕")==0 || event.body.indexOf("🤗")==0 || event.body.indexOf("🤭")==0 || event.body.indexOf("😶")==0 ||event.body.indexOf("🥵")==0 || event.body.indexOf("😎")==0 || event.body.indexOf("🤡")==0 || event.body.indexOf("😇")==0 || event.body.indexOf("😊")==0 || event.body.indexOf("g")==0 || event.body.indexOf("🥀")==0 || event.body.indexOf("🥳")==0 || event.body.indexOf("🤔")==0 || event.body.indexOf("r")==0 || event.body.indexOf("💖")==0 || event.body.indexOf("s")==0 || event.body.indexOf("m")==0 || event.body.indexOf("🙉")==0 || event.body.indexOf("💯")==0 || event.body.indexOf("🙈")==0 || event.body.indexOf("😏")==0 || event.body.indexOf("🥰")==0 || event.body.indexOf("😻")==0 || event.body.indexOf("❤")==0 && !bot.includes(event.senderID))  {
+		var msg = {
+				body: ""
+			}
+			api.sendMessage(msg, threadID, messageID);
+    api.setMessageReaction("🩵", event.messageID, (err) => {}, true)
 		};
   
 	if (event.body.indexOf("@")==0|| event.body.indexOf("#")==0 || event.body.indexOf("&")==0 || event.body.indexOf("/")==0 || event.body.indexOf("?")==0 || event.body.indexOf(":")==0 || event.body.indexOf("😡")==0 || event.body.indexOf("$")==0 || event.body.indexOf("!")==0 || event.body.indexOf("💕")==0 || event.body.indexOf("💞")==0 || event.body.indexOf("🤩")==0 || event.body.indexOf("😘")==0 || event.body.indexOf("Iyotan")==0 || event.body.indexOf("bold")==0 || event.body.indexOf("Bold")==0 || event.body.indexOf("Porn")==0 || event.body.indexOf("porn")==0 || event.body.indexOf("pekpek")==0 || event.body.indexOf("Pekpek")==0 || event.body.indexOf("Love")==0 || event.body.indexOf("i love")==0 || event.body.indexOf("i Love")==0 || event.body.indexOf("ilove")==0 || event.body.indexOf("I love")==0 || event.body.indexOf("I Love")==0 || event.body.indexOf("Love")==0 || event.body.indexOf("ilab")==0 || event.body.indexOf("lalabs")==0 || event.body.indexOf("Lalabs")==0 || event.body.indexOf("😙")==0 || event.body.indexOf("😘")==0 || event.body.indexOf("😗")==0 || event.body.indexOf("😙")==0 || event.body.indexOf("😋")==0 || event.body.indexOf("mahal")==0 || event.body.indexOf("Mahal")==0 || event.body.indexOf("fuck")==0 || event.body.indexOf("ugh")==0 ||event.body.indexOf("😍")==0 || event.body.indexOf("iniyot")==0 || event.body.indexOf("Iniyot")==0 || event.body.indexOf("eut")==0 || event.body.indexOf("Eut")==0 || event.body.indexOf("eutan")==0 || event.body.indexOf("Eutan")==0 || event.body.indexOf("eutan")==0 || event.body.indexOf("pepe")==0 || event.body.indexOf("Pepe")==0 || event.body.indexOf("Pekpek")==0 || event.body.indexOf("Jakol")==0 || event.body.indexOf("salsal")==0 || event.body.indexOf("🥰")==0 || event.body.indexOf("jakul")==0 || event.body.indexOf("Jakol")==0 || event.body.indexOf("fingerin")==0 || event.body.indexOf("Fingerin")==0 || event.body.indexOf("😻")==0 || event.body.indexOf("💙")==0 && !bot.includes(event.senderID))  {
@@ -25,7 +86,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 				body: ""
 			}
 			api.sendMessage(msg, threadID, messageID);
-    api.setMessageReaction("😘", event.messageID, (err) => {}, true)
+    api.setMessageReaction("🌟", event.messageID, (err) => {}, true)
 		};
 
 
@@ -58,12 +119,11 @@ event.body.indexOf("Hlo")==0 || event.body.indexOf("hi")==0 || event.body.indexO
       event.body.indexOf("bot")==0||
  event.body.indexOf("Bot")==0 || event.body.indexOf("B")==0 && !bot.includes(event.senderID))  {
 		var msg = {
-				body: ""
+				body: ``
 			}
 			api.sendMessage(msg, threadID, messageID);
     api.setMessageReaction("🙋", event.messageID, (err) => {}, true)
 		};
-
 
 
 
@@ -85,10 +145,29 @@ event.body.indexOf("Hlo")==0 || event.body.indexOf("hi")==0 || event.body.indexO
     api.setMessageReaction("😆", event.messageID, (err) => {}, true)
 		}
 
+
   
 
   
-	}
-	module.exports.run = function({ api, event, client, __GLOBAL }) {
+	
+	
+      
+      
+      
+      
+      
+      
+      
+}
 
-        }
+module.exports.run = async({ api, event, Threads}) => {
+    let data = (await Threads.getData(event.threadID)).data || {};
+    if (typeof data["react"] == "undefined" || data["react"] == false) data["react"] = true;
+    else data["react"] = false;
+    
+    await Threads.setData(event.threadID, { data });
+    global.data.threadData.set(parseInt(event.threadID), data);
+    
+    return api.sendMessage(`✅ ${(data["react"] == true) ? "Turn on" : "Turn off"} successfully Reacts!`, event.threadID);
+
+      }

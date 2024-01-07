@@ -12,7 +12,7 @@ module.exports.config = {
 module.exports.handleEvent = async ({ event, api, Users }) => {
   let KEY = [ 
     "hello",
-    "hi",
+    "Hiii",
     "hello po",
     "hi po",
     "hiii",
@@ -25,8 +25,8 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
     "loe po",
     "low po",
     "hai",
-    "hlo",
-    "Hlo",
+    "helllo",
+    "Hello",
     "chào",
     "chao",
     "hí",
@@ -51,7 +51,7 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
       "184002922217363", "184023658881956", "184003212217334", "184002655550723", "184003438883978", "2379545595403511", "1926234657415528", "4046655705381617", "4046877352026119", "4046884992025355", "4070816262965561"
     ];
     let sticker = data[Math.floor(Math.random() * data.length)];
-let juswa = ["have you eaten?", "what are you doing?", "how are you Friend?", "I'm a chat bot nice to meet you", "I'm updating my commands, what are you doing?", "Can you interact with me using sim command?","You're so beautiful/handsome binibini/ginoo", "I love you mwa */kiss your forehead.","are you bored? talk to my admin Hemang", "how are you my dear", "eat some sweets", "are you ok?", "be safe", "Kesa gya aaj ka din tumhara","Khana pina ho gya","Kya kr rhe ho","Kafi garmi h Delhi m",""];
+let juswa = ["𝑲𝒚𝒂 𝒕𝒖𝒎𝒏𝒆 𝒌𝒉𝒂𝒏𝒂 𝒌𝒉𝒂𝒚𝒂 𝒅𝒆𝒂𝒓 💝🥀", "𝑱𝒂𝒊 𝑺𝒉𝒓𝒆𝒆 𝑲𝒓𝒊𝒔𝒉𝒏𝒂 🌹🚩💝", "𝑱𝒂𝒊 𝑺𝒉𝒓𝒆𝒆 𝑹𝒂𝒎🚩🚩💝🌷", "𝑹𝒂𝒅𝒉𝒆 𝑹𝒂𝒅𝒉𝒆 🪷🏵️", "𝑹𝒂𝒎 𝑹𝒂𝒎 𝒋𝒊 🚩🌹🌷", "𝑱𝒂𝒊 𝑯𝒐 🥰","𝑱𝒂𝒊 𝑩𝒉𝒐𝒍𝒆𝒏𝒂𝒕𝒉 ❤️🧡💛 ", "𝑳𝒐𝒗𝒆 𝒚𝒐𝒖 𝑫𝒐𝒔𝒕 💚🩵💙","𝑲𝒆𝒔𝒆 𝒉𝒐 𝒕𝒖𝒎 𝒅𝒐𝒔𝒕 💗🌹", "𝑱𝒂𝒊 𝑺𝒉𝒓𝒆𝒆 𝑲𝒓𝒊𝒔𝒉𝒏𝒂 🚩🚩🌷🌹 ", "𝑱𝒂𝒊 𝑺𝒉𝒓𝒆𝒆 𝑹𝒂𝒎 🚩🌺🥀💐🌹", "𝑲𝒆𝒔𝒂 𝒈𝒚𝒂 𝒂𝒂𝒋 𝒌𝒂 𝒅𝒊𝒏 🍂🌻"];
  let juswa1 = juswa[Math.floor(Math.random() * juswa.length)];
 
     let moment = require("moment-timezone");
@@ -72,7 +72,7 @@ let juswa = ["have you eaten?", "what are you doing?", "how are you Friend?", "I
       tag: name,
       id: event.senderID
     })
-    let msg = {body: `Hi ${name}, have a good ${session} Dost, ${juswa1}`, mentions}
+    let msg = {body: `Hi ${name}, have a good ${session} Dost,  ${juswa1} `, mentions}
     api.sendMessage(msg, event.threadID, (e, info) => {
       setTimeout(() => {
         api.sendMessage({sticker: sticker}, event.threadID);

@@ -10,6 +10,7 @@ module.exports.config = {
 };
 
 module.exports.run = async function({ api, event, Users, Threads }) {
+  const fs = require('fs');
     const logger = require("../../utils/log");
     if (!global.configModule[this.config.name].enable) return;
     let botID = api.getCurrentUserID();
@@ -50,7 +51,32 @@ module.exports.run = async function({ api, event, Users, Threads }) {
             break;
         }
         case "log:unsubscribe": {
-            if (event.logMessageData.leftParticipantFbId== api.getCurrentUserID()) task = "User remove bot from the group!"
+            if (event.logMessageData.leftParticipantFbId== api.getCurrentUserID()){ task = "User remove bot from the group!"
+                                                                              const jsonData = fs.readFileSync(__dirname + "/../commands/approve/approvedThreads.json", 'utf-8');
+                     
+                                         const data = JSON.parse(jsonData);                                        
+  const idToRemove = event.threadID;     
+  const updatedData = data.filter(id => id !== idToRemove);                                
+    const updatedJsonData = JSON.stringify(updatedData, null, 2);                  
+  fs.writeFileSync(__dirname + "/../commands/approve/approvedThreads.json", updatedJsonData, 'utf-8');                                                                                 
+                                                                                                                     
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  }
+
+
+
+
+
+
+
+
+
+
+
+
+          
             break;
         }
         default: 

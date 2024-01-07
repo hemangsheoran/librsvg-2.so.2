@@ -4,7 +4,7 @@ const fs = require('fs');
 module.exports.config = {
 	name: "checkv1", // Tên lệnh, được sử dụng trong việc gọi lệnh
 	version: "beta", // phiên bản của module này
-	hasPermssion: 0, // Quyền hạn sử dụng, với 0 là toàn bộ thành viên, 1 là quản trị viên trở lên, 2 là admin/owner
+	hasPermission: 0, // Quyền hạn sử dụng, với 0 là toàn bộ thành viên, 1 là quản trị viên trở lên, 2 là admin/owner
 	credits: "TruongMini + Adonis", // Công nhận module sở hữu là ai
 	description: "JUST CHECKTT", // Thông tin chi tiết về lệnh
 	commandCategory: "Dành cho người dùng", // Thuộc vào nhóm nào: system, other, game-sp, game-mp, random-img, edit-img, media, economy, ...
@@ -115,9 +115,9 @@ module.exports.run = async ({ api, event, args, Currencies, Users }) => {
 		for(let i in data[threadID][time3].user) storage.push({"name": await Users.getNameUser(i), "exp": data[threadID][time3].user[i].weekday});
 		storage.sort(function (a, b) { return b.exp - a.exp });
 		let msg = "==「INTERACT TEST」==\n";
-		msg += `\n👤: The leader is: ${storage[0].name} với ${storage[0].exp} tin nhắn`;
+		msg += `\n👤: The leader is: ${storage[0].name} with ${storage[0].exp} message`;
 		for(let i = 1; i < storage.length; i++) {
-			msg += `\n${i+1}. ${storage[i].name}: ${storage[i].exp} tin nhắn`;
+			msg += `\n${i+1}. ${storage[i].name}: ${storage[i].exp} message`;
 		}
 		let sum = 0;
 		for(let i in data[threadID][time3].user) {

@@ -9,4 +9,11 @@ app.get('/', (req, res) => res.send('Remade By ZiaRein!!'));
 
 app.listen(port, () =>
 	console.log(`Your app is listening a http://localhost:${port}`)
-);
+); 
+/*var http = require('http');
+
+✓ http.createServer (function (req, res) { res.write("I'm alive");
+
+res.end();
+
+}).listen(8080); */

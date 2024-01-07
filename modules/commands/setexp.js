@@ -19,7 +19,7 @@ module.exports.config = {
 
 module.exports.run = async function({ api, event, args, Currencies, utils, Users}) {
 var mention = Object.keys(event.mentions)[0];
-    var prefix = ";"
+    var prefix = "."
     var {body} = event;
     var kong = 0;
     			var content = body.slice(prefix.length + 9, body.length);

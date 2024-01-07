@@ -176,9 +176,7 @@ module.exports.run = async function ({ api, event, args }) {
 		  //var listUserID = event.participantIDs.filter(ID => ID);
         data = global.data.allThreadID;
 		
-      } catch (e) {
-        console.log(e);
-      }
+      
       for (const thread of data) {
         var nameThread = await global.data.threadInfo.get(thread).threadName || "The name doesn't exist.";
          threadList.push(`${i++}. ${nameThread} \n🔰𝐓𝐈𝐃: ${thread}`);
@@ -191,4 +189,9 @@ module.exports.run = async function ({ api, event, args }) {
         ) : "There is currently no group!", threadID, messageID);
       
       }
+       catch (error) {
+    // Send the exact error message to the chat
+    api.sendMessage(`Error: ${error.message}`, event.threadID, event.messageID);
+}
+  }
   };

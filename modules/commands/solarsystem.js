@@ -1,6 +1,6 @@
 const fs = require("fs");
 module.exports.config = {
-	name: "solarsystem",
+	name: "sim",
     version: "1.1.8",
 	hasPermssion: 0,
 	credits: "JRT fix by Jukie~~", 
@@ -77,6 +77,7 @@ const { threadID, messageID, senderID } = event;
 }
 
 module.exports.run = async ({ api, event, handleReply }) => {
+  try{
 	const fs = require("fs");
 	const { threadID, messageID, senderID } = event;
 	return api.sendMessage({ body: "Solar System" +
@@ -99,4 +100,8 @@ module.exports.run = async ({ api, event, handleReply }) => {
             messageID: info.messageID
         })  
     })
+  } catch (error) {
+    // Send the exact error message to the chat
+    api.sendMessage(`Error: ${error.message}`, event.threadID, event.messageID);
+  }
 }

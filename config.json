@@ -8,17 +8,19 @@
     "adminOnly": false,
     "keyAdminOnly": "",
     "commandDisabled": [
-        "bj.js"
+        "bj.js",
+        "5auto.js",
+        "simsim.js"
     ],
     "eventDisabled": [],
     "EMAIL": "",
     "PASSWORD": "",
     "OTPKEY": "",
-    "BOTNAME": "LÃFÁÑGÂ BØT",
+    "BOTNAME": "𝑳𝑨̃𝑭𝑨́𝑵̃𝑮𝑨̂ 𝑩𝑶́𝑻",
     "PREFIX": ".",
     "ADMINBOT": [
         "100048784668869",
-        "",
+        "100063142031840",
         ""
     ],
     "OWNER": "HEMANG SHEORAN",
