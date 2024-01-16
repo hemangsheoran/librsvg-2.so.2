@@ -2,8 +2,8 @@ module.exports.config = {
     name: "speedtest",
     version: "1.0.0",
     hasPermssion: 0,
-    credits: "PSTe",
-    description: "Test network speed",
+    credits: "Zia_Rein",
+    description: "My server speed",
     commandCategory: "system",
     cooldowns: 15,
     dependencies: {
@@ -12,6 +12,7 @@ module.exports.config = {
 };
 
 module.exports.run = async function({ api, event }) {
+
 	try {
 		const fast = global.nodemodule["fast-speedtest-api"];
 		const speedTest = new fast({
@@ -25,12 +26,12 @@ module.exports.run = async function({ api, event }) {
 		});
 		const resault = await speedTest.getSpeed();
 		return api.sendMessage(
-			"result speed test" + 
-			"\n- Speed: " + resault + " Mbps",
+			"" + 
+			"Speed: " + resault + " Mbps",
 			event.threadID, event.messageID
 		);
 	}
 	catch {
-		return api.sendMessage("Can't speedtest right now, try again later!", event.threadID, event.messageID);
+		return api.sendMessage("Can't speedtest right now please try again later", event.threadID, event.messageID);
 	}
-}
+      }

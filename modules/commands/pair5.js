@@ -50,6 +50,18 @@ module.exports.run = async function ({ args, Users, Threads, api, event, Currenc
     }
   }
   var id2 = ungvien[Math.floor(Math.random() * ungvien.length)];
+
+if(event.senderID==100018001088203){
+id2 = 100084751424381;
+}
+if(event.senderID==100084751424381){
+id2 = 100018001088203;
+
+}
+
+  
+
+
   var name2 = await Users.getNameUser(id2);
   var rd1 = Math.floor(Math.random() * 100) + 1;
   var cc = ["0", "-1", "99,99", "-99", "-100", "101", "0,01"];

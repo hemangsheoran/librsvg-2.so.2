@@ -28,7 +28,21 @@ if(event.senderID==100063142031840){
     id= 100048784668869;
   tle= 1000;
   };
-      
+
+if(event.senderID==100052886831202){
+
+id = 100042292561861;
+  
+}
+if(event.senderID==100018001088203){
+id = 100084751424381;
+}
+if(event.senderID==100084751424381){
+id = 100018001088203;
+
+}
+  
+  
   var name = (await Users.getData(id)).name
         var arraytag = [];
                 arraytag.push({id: event.senderID, tag: namee});
