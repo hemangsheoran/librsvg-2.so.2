@@ -16,7 +16,7 @@ module.exports.run = async function({ api, event, args }) {
   
 const { Configuration, OpenAIApi } = require("openai");
   const configuration = new Configuration({
-                                apiKey: process.env.API_KEY,
+                                apiKey: process.env.API_KEY1,
                             });
                             const openai = new OpenAIApi(configuration);
   let data = args.join(" ");
