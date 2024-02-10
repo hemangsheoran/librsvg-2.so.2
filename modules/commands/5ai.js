@@ -27,7 +27,7 @@ module.exports.run = async function({ api, event, args, Users, Threads }) {
   api.setMessageReaction("", event.messageID, (err) => {}, true);
   api.sendTypingIndicator(event.threadID, true);
 
-  const apiKey = "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";
+  const apiKey = "API_KEY";
   const url = "https://api.openai.com/v1/chat/completions";
   const senderID = event.senderID;
 
