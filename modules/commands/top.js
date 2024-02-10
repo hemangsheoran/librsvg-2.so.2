@@ -108,10 +108,10 @@ module.exports.run = async ({ event, api, args, Currencies, Users }) => {
         all.sort((a, b) => b.exp - a.exp);
         let num = 0;
                let msg = {
-          body: 'The 30 People Who did Highest Messages On Server are!',
+          body: 'The 50 People Who did Highest Messages On Server are!',
           
         }
-        for (var i = 0; i < 30; i++) {
+        for (var i = 0; i < 50; i++) {
            
    
           let level = all[i].exp;
