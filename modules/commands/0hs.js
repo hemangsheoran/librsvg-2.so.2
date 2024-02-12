@@ -25,7 +25,7 @@ const { Configuration, OpenAIApi } = require("openai");
                             } else {
                                 try {
                                     const completion = await openai.createCompletion({
-                                        model: "text-davinci-003",
+                                        model: "gpt-3.5-turbo-instruct",
                                         prompt: args.join(" "),
                                         temperature: 0.5,
                                         max_tokens: 200,
